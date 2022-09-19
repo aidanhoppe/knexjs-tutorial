@@ -1,7 +1,7 @@
 const express = require('express');
 const personController = require('../controller/person');
 const listingController = require('../controller/listing');
-const {generateUploadURL} = require('./s3.js')
+const { generateUploadURL } = require('../s3')
 
 const router = express.Router();
 router.post('/person', personController.createPerson);
