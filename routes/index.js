@@ -9,7 +9,7 @@ const { generateUploadURL } = require('../s3')
 const router = express.Router();
 router.post('/listing', listingController.createListing);
 router.get('/s3Url', async (req, res) => {
-    const url = await generateUploadURL
+    const url = await generateUploadURL()
     res.send({url})
 })
 router.post('/address', addressController.createAddress)
