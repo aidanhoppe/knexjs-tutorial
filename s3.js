@@ -1,0 +1,37 @@
+import dotenv from 'dotenv'
+import aws from 'aws-sdk'
+import crypto from 'crypto'
+import { promisify } from "util"
+const randomBytes = promisify(crypto.randomBytes)
+
+//require('dotenv').config()
+dotenv.config()
+
+const region = "us-west-1"
+const bucketName = "pdevfree-bucket"
+const accessKeyId = "AKIA3PVOPM4ANEXPHPW2"
+const secretAccessKey = "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"
+// const accessKeyId = process.env.AWS_ACCESS_KEY_ID
+// const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY
+
+const s3 = new aws.S3({
+  region,
+  accessKeyId,
+  secretAccessKey,
+  signatureVersion: 'v4',
+  // apiVersion: 'latest'
+})
+
+export async function generateUploadURL() {
+  const rawBytes = await randomBytes(16)
+  const imageName = rawBytes.toString('hex')
+
+  const params = ({
+    Bucket: bucketName,
+    Key: imageName+'.jpg',
+    Expires: 60
+  })
+  
+  const uploadURL = await s3.getSignedUrlPromise('putObject', params)
+  return uploadURL
+}
