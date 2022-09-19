@@ -1,14 +1,20 @@
 const express = require('express');
-const personController = require('../controller/person');
 const listingController = require('../controller/listing');
+const addressController = require('../controller/address');
+const userController = require('../controller/user');
+const brandController = require('../controller/brand');
+const categoryController = require('../controller/category');
 const { generateUploadURL } = require('../s3')
 
 const router = express.Router();
-router.post('/person', personController.createPerson);
 router.post('/listing', listingController.createListing);
 router.get('/s3Url', async (req, res) => {
     const url = await generateUploadURL
     res.send({url})
 })
+router.post('/address', addressController.createAddress)
+router.post('/user', userController.createUser)
+router.post('/brand', brandController.createBrand)
+router.post('/category', categoryController.createCategory)
 
 module.exports = router;

@@ -42,7 +42,7 @@ exports.up = async (knex) => {
     table.increments('brand_id')
     references(table, 'user', undefined, 'submitted_by')
     table.string('name', 30).notNullable().unique()
-    table.enu('status', ['approved', 'under_review', 'rejected']).notNullable() 
+    table.enu('status', ['approved', 'under_review', 'rejected']).notNullable().defaultTo('under_review')
     table.integer('use_count_current')
     table.integer('use_count_all')
     table.timestamps(true, true)
