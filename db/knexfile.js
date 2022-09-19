@@ -5,16 +5,17 @@ module.exports = {
     client: 'postgresql',
     connection: {
       // TODO change to your db name
-      database: 'knexjs_tutorial',
+      host: 'pdevfree.cls3klxkeiws.us-west-1.rds.amazonaws.com',
+      database: 'Testing',
 
       // change to your db user
-      user: 'jgoebel',
-      password: null,
+      user: 'pdevfree',
+      password: 'pdevfree'
     },
-    pool: {
-      min: 2,
-      max: 10,
-    },
+    // pool: {
+    //   min: 2,
+    //   max: 10,
+    // },
     migrations: {
       tableName: 'knex_migrations',
     },
