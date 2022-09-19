@@ -49,7 +49,7 @@ exports.up = async (knex) => {
   })
   await knex.schema.createTable('listing', (table) => {
     table.increments('listing_id')
-    references(table, 'user', undefined, 'seller')
+    references(table, 'user', undefined, 'seller_id')
     table.string('title', 60).notNullable()
     table.integer('price', 4).notNullable()
     table.integer('shipping', 3).notNullable()
