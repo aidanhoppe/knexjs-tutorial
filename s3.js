@@ -5,7 +5,7 @@ const {promisify} = require('util')
 const randomBytes = promisify(crypto.randomBytes)
 
 //require('dotenv').config()
-dotenv.config()
+// dotenv.config()
 
 const region = "us-west-1"
 const bucketName = "pdevfree-bucket"
