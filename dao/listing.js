@@ -1,7 +1,7 @@
 const db = require('../db/db');
 
 class ListingDAO {
-  async createListing(seller_id, title, price, shipping, description,condition,photos,brand_id,model,category_id,accepting_offers) {
+  async createListing(seller_id, title, price, shipping, description, condition, thumbnail, photos, brand_id, model, category_id, accepting_offers) {
     const [id] = await db('listing')
       .insert({
         seller_id, 
@@ -10,6 +10,7 @@ class ListingDAO {
         shipping,
         description,
         condition,
+        thumbnail,
         photos,
         brand_id,
         model,

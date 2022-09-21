@@ -13,6 +13,7 @@ exports.up = async (knex) => {
   })
   await knex.schema.createTable('user', (table) => {
     table.increments('user_id')
+    table.string('firebase_id').unique()
     table.string('first_name', 30).notNullable()
     table.string('last_name', 30).notNullable()
     table.string('shop_name', 30)
@@ -55,6 +56,7 @@ exports.up = async (knex) => {
     table.integer('shipping', 3).notNullable()
     table.text('description')
     table.enu('condition', ['Nonfunctional', 'Poor', 'Fair', 'Good', 'Excellent', 'Mint', 'New']).notNullable()
+    table.text('thumbnail').notNullable()
     table.specificType('photos', 'text ARRAY').notNullable()
     references(table, 'brand')
     table.string('model')
