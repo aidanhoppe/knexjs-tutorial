@@ -11,10 +11,11 @@ class SaveDAO {
     return id;
   }
   async deleteSave(user_id, listing_id) {
-    await db('save')
+    const res = await db('save')
     .where('user_id', user_id)
     .andWhere('listing_id', listing_id)
-    .del()
+    .del(['user_id', 'listing_id'])
+    return res
   }
 }
 
