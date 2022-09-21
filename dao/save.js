@@ -1,4 +1,3 @@
-const { deleteSave } = require('../controller/save');
 const db = require('../db/db');
 
 class SaveDAO {
@@ -15,6 +14,7 @@ class SaveDAO {
     await db('save')
     .where('user_id', user_id)
     .andWhere('listing_id', listing_id)
+    .del()
   }
 }
 
