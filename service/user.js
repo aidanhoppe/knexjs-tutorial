@@ -17,8 +17,9 @@ class UserService {
     return user
   }
   async updateUser(userDto) {
-    const {first_name, last_name, email, verified_email, phone, verified_phone, shop_name, address_id} = userDto
+    const {user_id, first_name, last_name, email, verified_email, phone, verified_phone, shop_name, address_id} = userDto
     return userDAO.updateUser(
+        user_id,
         first_name, 
         last_name, 
         email, 

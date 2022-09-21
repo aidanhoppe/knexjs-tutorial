@@ -19,8 +19,9 @@ class UserDAO {
         console.log("User fresh from DAO: ", user)
         return user
     }
-    async updateUser(first_name, last_name, email, verified_email, phone, verified_phone, shop_name, address_id) {
+    async updateUser(user_id, first_name, last_name, email, verified_email, phone, verified_phone, shop_name, address_id) {
         const [response] = await db('user')
+        .where('user_id', user_id)
         .update({
             first_name, 
             last_name, 
