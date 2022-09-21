@@ -22,6 +22,7 @@ class SaveDAO {
     .where('user_id', user_id)
     .andWhere('listing_id', listing_id)
     .returning('save_id')
+    console.log("Id: ", id)
     return id
   }
 }
