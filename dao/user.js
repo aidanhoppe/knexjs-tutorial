@@ -16,7 +16,7 @@ class UserDAO {
     async getUser(firebase_id) {
         const [user] = await db('user')
         .where('firebase_id', firebase_id).select()
-        console.log("User fresh from DAO: ". user)
+        console.log("User fresh from DAO: ", user)
         return user
     }
 }
