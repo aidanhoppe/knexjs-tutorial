@@ -29,6 +29,7 @@ exports.up = async (knex) => {
     table.boolean('banned').defaultTo(false)
     table.specificType('feed_tags', 'text ARRAY')
     table.boolean('show_tips').defaultTo(true)
+    table.integer('reviews_count').defaultTo(0)
     references(table, 'address', notNullable=false)
     table.timestamps(true, true)
   })

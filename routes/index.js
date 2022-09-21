@@ -17,4 +17,5 @@ router.post('/user', userController.createUser)
 router.post('/brand', brandController.createBrand)
 router.post('/category', categoryController.createCategory)
 router.get('/user/:firebase_id', userController.getUser)
+router.put('/user/:firebase_id', userController.updateUser)
 module.exports = router;

@@ -18,6 +18,14 @@ class UserController {
         console.log(e)
     }
   }
+  async updateUser(req, res) {
+    try {
+        const response = await userService.updateUser(req.body)
+        res.status(201).json(response)
+    } catch (e) {
+        console.log(e)
+    }
+  }
 }
 
 module.exports = new UserController();

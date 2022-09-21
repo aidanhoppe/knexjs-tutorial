@@ -16,6 +16,19 @@ class UserService {
     console.log('Service user: ', user)
     return user
   }
+  async updateUser(userDto) {
+    const {first_name, last_name, email, verified_email, phone, verified_phone, shop_name, address_id} = userDto
+    return userDAO.updateUser(
+        first_name, 
+        last_name, 
+        email, 
+        verified_email, 
+        phone, 
+        verified_phone, 
+        shop_name, 
+        address_id
+    )
+  }
 }
 
 module.exports = new UserService();

@@ -19,6 +19,20 @@ class UserDAO {
         console.log("User fresh from DAO: ", user)
         return user
     }
+    async updateUser(first_name, last_name, email, verified_email, phone, verified_phone, shop_name, address_id) {
+        const [response] = await db('user')
+        .update({
+            first_name, 
+            last_name, 
+            email, 
+            verified_email, 
+            phone, 
+            verified_phone, 
+            shop_name, 
+            address_id
+        })
+        return response
+    }
 }
 
 module.exports = new UserDAO();
