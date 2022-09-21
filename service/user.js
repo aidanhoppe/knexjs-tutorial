@@ -11,9 +11,10 @@ class UserService {
     );
   }
   getUser(userDto) {
-    // console.log(userDto)
     const { firebase_id } = userDto
-    return userDAO.getUser(firebase_id)
+    const user = userDAO.getUser(firebase_id)
+    console.log('Service user: ', user)
+    return user
   }
 }
 
