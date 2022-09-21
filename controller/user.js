@@ -12,7 +12,6 @@ class UserController {
   async getUser(req, res) {
     try {
         const user = await userService.getUser(req.params)
-        console.log('Controller user: ', user)
         res.status(201).json(user)
     } catch (e) {
         console.log(e)

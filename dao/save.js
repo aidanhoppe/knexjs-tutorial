@@ -1,0 +1,21 @@
+const { deleteSave } = require('../controller/save');
+const db = require('../db/db');
+
+class SaveDAO {
+  async createSave(user_id, listing_id) {
+    const [id] = await db('save')
+      .insert({
+        user_id,
+        listing_id
+      })
+      .returning('save_id');
+    return id;
+  }
+  async deleteSave(user_id, listing_id) {
+    await db('save')
+    .where('user_id', user_id)
+    .andWhere('listing_id', listing_id)
+  }
+}
+
+module.exports = new SaveDAO();

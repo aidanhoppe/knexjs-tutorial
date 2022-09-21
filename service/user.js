@@ -13,7 +13,6 @@ class UserService {
   async getUser(userDto) {
     const { firebase_id } = userDto
     const user = await userDAO.getUser(firebase_id)
-    console.log('Service user: ', user)
     return user
   }
   async updateUser(userDto) {

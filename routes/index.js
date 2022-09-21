@@ -4,6 +4,7 @@ const addressController = require('../controller/address');
 const userController = require('../controller/user');
 const brandController = require('../controller/brand');
 const categoryController = require('../controller/category');
+const saveController = require('../controller/save')
 const { generateUploadURL } = require('../s3')
 
 const router = express.Router();
@@ -18,4 +19,6 @@ router.post('/brand', brandController.createBrand)
 router.post('/category', categoryController.createCategory)
 router.get('/user/:firebase_id', userController.getUser)
 router.put('/user/:firebase_id', userController.updateUser)
+router.post('/save', saveController.createSave)
+router.delete('/save/:listing_id', saveController.deleteSave)
 module.exports = router;
