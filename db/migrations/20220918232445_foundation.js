@@ -22,7 +22,7 @@ exports.up = async (knex) => {
     table.float('rating')
     table.string('email').notNullable().unique()
     table.boolean('verified_email').defaultTo(false)
-    table.integer('phone')
+    table.bigInteger('phone')
     table.boolean('verified_phone').defaultTo(false)
     table.specificType('recent_searches', 'text ARRAY')
     table.timestamp('last_login').defaultTo(knex.fn.now())
