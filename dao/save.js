@@ -17,11 +17,11 @@ class SaveDAO {
     .del(['user_id', 'listing_id'])
     return res
   }
-  async getSavedBool(listing_id, user_id) {
+  async getSaveId(listing_id, user_id) {
     const id = await db('save')
     .where('user_id', user_id)
     .andWhere('listing_id', listing_id)
-    .returning('save_id')
+    .select('save_id')
     console.log("Id: ", id)
     return id
   }

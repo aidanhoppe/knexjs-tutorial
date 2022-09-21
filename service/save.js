@@ -16,9 +16,9 @@ class SaveService {
         listing_id
     )
   }
-  getSavedBool(saveDto) {
+  getSaveId(saveDto) {
     const { listing_id, user_id } = saveDto
-    return saveDAO.getSavedBool(
+    return saveDAO.getSaveId(
         listing_id,
         user_id
     )
