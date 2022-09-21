@@ -15,7 +15,7 @@ class UserDAO {
     }
     async getUser(firebase_id) {
         const [user] = await db('user')
-        .where('firebase_id', firebase_id)
+        .where('firebase_id', firebase_id).select()
         return user
     }
 }
