@@ -1,4 +1,3 @@
-const { deleteSave } = require('../dao/save');
 const saveDAO = require('../dao/save');
 
 class SaveService {
@@ -12,10 +11,16 @@ class SaveService {
   deleteSave(saveParam, saveBody) {
     const listing_id = saveParam.listing_id
     const user_id = saveBody.user_id
-    console.log("listing_id: ", listing_id, "  user_id: ", user_id)
     return saveDAO.deleteSave(
         user_id,
         listing_id
+    )
+  }
+  getSavedBool(saveDto) {
+    const { listing_id, user_id } = saveDto
+    return saveDAO.getSavedBool(
+        listing_id,
+        user_id
     )
   }
 }

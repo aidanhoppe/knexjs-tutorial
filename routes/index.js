@@ -21,4 +21,5 @@ router.get('/user/:firebase_id', userController.getUser)
 router.put('/user/:firebase_id', userController.updateUser)
 router.post('/save', saveController.createSave)
 router.delete('/save/:listing_id', saveController.deleteSave)
+router.get('/save/:listing_id/:user_id', saveController.getSavedBool)
 module.exports = router;
