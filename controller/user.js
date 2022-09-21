@@ -11,7 +11,7 @@ class UserController {
   }
   async getUser(req, res) {
     try {
-        const user = await userService.createUser(req.body)
+        const user = await userService.getUser(req.body)
         res.status(201).json(user)
     } catch (e) {
         console.log(e)
