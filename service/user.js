@@ -10,6 +10,10 @@ class UserService {
         email
     );
   }
+  getUser(userDto) {
+    const { firebase_id } = userDto
+    return userDAO.getUser(firebase_id)
+  }
 }
 
 module.exports = new UserService();
