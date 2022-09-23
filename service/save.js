@@ -8,9 +8,8 @@ class SaveService {
         listing_id
     );
   }
-  deleteSave(saveParam, saveBody) {
-    const listing_id = saveParam.listing_id
-    const user_id = saveBody.user_id
+  deleteSave(saveDto) {
+    const {listing_id, user_id} = saveDto
     return saveDAO.deleteSave(
         user_id,
         listing_id

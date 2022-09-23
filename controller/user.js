@@ -37,7 +37,6 @@ class UserController {
   async getUserListings(req, res) {
     try {
       const listings = await userService.getUserListings(req.params)
-      console.log(listings)
       res.status(201).json(listings)
     } catch (e) {
       console.log(e)

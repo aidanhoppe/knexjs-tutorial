@@ -25,7 +25,7 @@ router.put('/user/:firebase_id', userController.updateUser)
 router.get('/user/:user_id/listings', userController.getUserListings)
 
 router.post('/save', saveController.createSave)
-router.delete('/save/:listing_id', saveController.deleteSave)
+router.delete('/save/:listing_id/:user_id', saveController.deleteSave)
 router.get('/save/:listing_id/:user_id', saveController.getSaveId)
 
 router.get('/follow/:follower/:followee', followController.getFollow)

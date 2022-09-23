@@ -11,7 +11,7 @@ class SaveController {
   }
   async deleteSave(req, res) {
     try {
-        const id = await saveService.deleteSave(req.params, req.body)
+        const id = await saveService.deleteSave(req.params)
         res.status(201).json(id)
     } catch (e) {
         console.log(e)
