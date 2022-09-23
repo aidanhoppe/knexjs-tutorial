@@ -1,4 +1,5 @@
 const db = require('../db/db');
+const { deleteFollow } = require('../service/follow');
 
 class FollowDAO {
   async createFollow(follower, followee) {
@@ -15,6 +16,13 @@ class FollowDAO {
     .where('follower', follower)
     .andWhere('followee', followee)
     .select()
+    return result
+  }
+  async deleteFollow(follower, followee) {
+    const [result] = await db('follow')
+    .where('follower', follower)
+    .andWhere('followee', followee)
+    .del(['follower', 'followee'])
     return result
   }
 }

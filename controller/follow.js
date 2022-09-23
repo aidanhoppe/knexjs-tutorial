@@ -17,6 +17,14 @@ class FollowController {
       console.log(e)
     }
   }
+  async deleteFollow(req, res) {
+    try {
+      const result = await followService.deleteFollow(req.body)
+      res.status(201).json(result)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 module.exports = new FollowController();

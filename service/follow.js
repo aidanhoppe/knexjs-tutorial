@@ -9,6 +9,10 @@ class FollowService {
     const { follower, followee } = followDto
     return followDAO.getFollow(follower, followee)
   }
+  deleteFollow(followDto) {
+    const { follower, followee } = followDto
+    return followDAO.deleteFollow(follower, followee)
+  }
 }
 
 module.exports = new FollowService();
