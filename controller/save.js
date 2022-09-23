@@ -25,6 +25,14 @@ class SaveController {
         console.log(e)
     }
   }
+  async getUserSaves(req, res) {
+    try {
+      const saves = await saveService.getUserSaves(req.params)
+      res.status(201).json(saves)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 module.exports = new SaveController();

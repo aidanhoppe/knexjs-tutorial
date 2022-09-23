@@ -24,6 +24,12 @@ class SaveDAO {
     .select('save_id')
     return id
   }
+  async getUserSaves(user_id) {
+    const res = await db('save')
+    .where('user_id', user_id)
+    .select()
+    return res
+  }
 }
 
 module.exports = new SaveDAO();

@@ -27,6 +27,7 @@ router.get('/user/:user_id/listings', userController.getUserListings)
 router.post('/save', saveController.createSave)
 router.delete('/save/:listing_id/:user_id', saveController.deleteSave)
 router.get('/save/:listing_id/:user_id', saveController.getSaveId)
+router.get('/save/user/:user_id', saveController.getUserSaves)
 
 router.get('/follow/:follower/:followee', followController.getFollow)
 router.post('/follow', followController.createFollow)

@@ -22,6 +22,10 @@ class SaveService {
         user_id
     )
   }
+  getUserSaves(saveDto) {
+    const { user_id } = saveDto
+    return saveDAO.getUserSaves(user_id)
+  }
 }
 
 module.exports = new SaveService();
