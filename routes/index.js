@@ -28,5 +28,5 @@ router.delete('/save/:listing_id', saveController.deleteSave)
 router.get('/save/:listing_id/:user_id', saveController.getSaveId)
 
 router.get('/follow', followController.getFollow)
-router.get('/follow', followController.createFollow)
+router.post('/follow', followController.createFollow)
 module.exports = router;
