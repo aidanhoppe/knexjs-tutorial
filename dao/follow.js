@@ -11,8 +11,8 @@ class FollowDAO {
     return result;
   }
   async getFollow(follower, followee) {
-    //DELETE LATER
-    console.log(follower, followee)
+    //DELETE later
+    console.log("get follow -- follower: ", follower, " followee: ", followee)
     const [result] = await db('follow')
     .where('follower', follower)
     .andWhere('followee', followee)
@@ -20,6 +20,8 @@ class FollowDAO {
     return result
   }
   async deleteFollow(follower, followee) {
+    //DELETE later
+    console.log("delete follow -- follower: ", follower, " followee: ", followee)
     const [result] = await db('follow')
     .where('follower', follower)
     .andWhere('followee', followee)
