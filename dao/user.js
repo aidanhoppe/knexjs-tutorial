@@ -34,7 +34,7 @@ class UserDAO {
     }
     async getUserListings(user_id) {
         const listings = await db('listing')
-        .where('user_id', user_id)
+        .where('seller_id', user_id)
         .andWhere('status', 'Active')
         .orderBy('created_at', 'desc')
         .select()
