@@ -15,7 +15,7 @@ class FollowDAO {
     .where('follower', follower)
     .andWhere('followee', followee)
     .select()
-    return result
+    return result>0
   }
 }
 
