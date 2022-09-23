@@ -8,7 +8,7 @@ class FollowDAO {
         follower,
         followee
       })
-    return result>0;
+    return result;
   }
   async getFollow(follower, followee) {
     const result = await db('follow')
