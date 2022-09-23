@@ -6,6 +6,8 @@ const brandController = require('../controller/brand');
 const categoryController = require('../controller/category');
 const saveController = require('../controller/save')
 const followController = require('../controller/follow')
+const payoutController = require('../controller/payout')
+const available_payoutController = require('../controller/available_payout')
 const { generateUploadURL } = require('../s3')
 
 const router = express.Router();
@@ -33,4 +35,12 @@ router.get('/save/:listing_id/:user_id', saveController.getSaveId)
 router.get('/follow/:follower/:followee', followController.getFollow)
 router.post('/follow', followController.createFollow)
 router.delete('/follow', followController.deleteFollow)
+
+router.put('/payout/reset', payoutController.resetPayout)
+router.get('/payout/:user_id', payoutController.getPayout)
+router.post('/payout', payoutController.createPayout)
+
+router.put('/available_payout', available_payoutController.resetPayout)
+router.post('/available_payout', available_payoutController.createPayout)
+router.get('/available_payout', available_payoutController.getPayout)
 module.exports = router;
