@@ -9,6 +9,14 @@ class ListingController {
       console.error(err);
     }
   }
+  async getNewListings(req, res) {
+    try {
+      const listings = await listingService.getNewListings(req.query.page, req.query.limit)
+      res.status(201).json(listings)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 module.exports = new ListingController();

@@ -18,6 +18,9 @@ class ListingService {
         accepting_offers
     );
   }
+  getNewListings(page, limit) {
+    return listingDAO.getNewListings(parseInt(page), parseInt(limit))
+  }
 }
 
 module.exports = new ListingService();

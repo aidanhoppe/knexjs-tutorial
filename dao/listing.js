@@ -18,8 +18,16 @@ class ListingDAO {
         accepting_offers
       })
       .returning('listing_id');
-
     return id;
+  }
+  async getNewListings(page, limit) {
+    const startIndex = (page - 1) * limit
+    const results = await db('listing')
+    .orderBy('created_at', 'desc')
+    .select()
+    .limit(limit)
+    .offset(startIndex)
+    return results
   }
 }
 

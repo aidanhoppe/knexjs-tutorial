@@ -19,6 +19,7 @@ exports.up = async (knex) => {
     table.string('shop_name', 30)
     table.string('shop_photo')
     table.text('shop_policy')
+    table.integer('default_shipping')
     table.float('rating')
     table.string('email').notNullable().unique()
     table.boolean('verified_email').defaultTo(false)
