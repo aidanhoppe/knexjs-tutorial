@@ -2,6 +2,8 @@ const db = require('../db/db');
 
 class FollowDAO {
   async createFollow(follower, followee) {
+    //DELETE later
+    console.log("create follow -- follower: ", follower, " followee: ", followee)
     console.log('follower: ', follower, " followee: ", followee)
     const result = await db('follow')
       .insert({
@@ -11,8 +13,6 @@ class FollowDAO {
     return result;
   }
   async getFollow(follower, followee) {
-    //DELETE later
-    console.log("get follow -- follower: ", follower, " followee: ", followee)
     const [result] = await db('follow')
     .where('follower', follower)
     .andWhere('followee', followee)
