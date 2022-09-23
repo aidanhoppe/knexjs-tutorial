@@ -29,9 +29,9 @@ class UserService {
         address_id
     )
   }
-  getUserListings(listingDto) {
-    const { user_id } = listingDto
-    return listingDAO.getUserListings(user_id)
+  getUserListings(param_id) {
+    const { user_id } = param_id
+    return userDAO.getUserListings(user_id)
   }
 }
 
