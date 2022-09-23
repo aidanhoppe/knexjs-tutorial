@@ -29,6 +29,10 @@ class UserService {
         address_id
     )
   }
+  getUserListings(listingDto) {
+    const { user_id } = listingDto
+    return listingDAO.getUserListings(user_id)
+  }
 }
 
 module.exports = new UserService();

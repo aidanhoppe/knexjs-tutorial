@@ -20,7 +20,6 @@ class SaveController {
   async getSaveId(req, res) {
     try {
         const [tf] = await saveService.getSaveId(req.params)
-        console.log(tf)
         res.status(201).json(tf)
     } catch (e) {
         console.log(e)

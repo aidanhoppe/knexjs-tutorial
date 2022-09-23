@@ -32,6 +32,14 @@ class UserDAO {
             address_id
         })
     }
+    async getUserListings(user_id) {
+        const listings = await db('listing')
+        .where('user_id', user_id)
+        .andWhere('status', 'Active')
+        .orderBy('created_at', 'desc')
+        .select()
+        return listings
+    }
 }
 
 module.exports = new UserDAO();
