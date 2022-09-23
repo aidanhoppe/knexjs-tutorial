@@ -14,6 +14,8 @@ class UserDAO {
         return id;
     }
     async getUser(user_id) {
+        //DELETE later
+        console.log(user_id)
         const [user] = await db('user')
         .where('user_id', user_id).select()
         return user
@@ -38,6 +40,8 @@ class UserDAO {
         })
     }
     async getUserListings(user_id) {
+        //DELETE later
+        console.log(user_id)
         const listings = await db('listing')
         .where('seller_id', user_id)
         .andWhere('status', 'Active')
