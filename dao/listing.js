@@ -27,6 +27,7 @@ class ListingDAO {
     .select()
     .limit(limit)
     .offset(startIndex)
+    console.log('results from DAO: ', results)
     return results
   }
 }
