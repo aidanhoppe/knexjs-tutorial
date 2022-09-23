@@ -1,5 +1,4 @@
 const db = require('../db/db');
-const { deleteFollow } = require('../service/follow');
 
 class FollowDAO {
   async createFollow(follower, followee) {
