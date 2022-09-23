@@ -28,7 +28,7 @@ class SaveDAO {
     const res = await db('save')
     .where('user_id', user_id)
     .select()
-    .innerJoin('listing', 'listing_id', 'listing_id')
+    .innerJoin('listing', 'save.listing_id', 'listing.listing_id')
     .orderBy('created_at', 'desc')
     return res
   }
