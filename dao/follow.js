@@ -7,7 +7,6 @@ class FollowDAO {
         follower,
         followee
       })
-      .returning('id');
     return true;
   }
   async getFollow(follower, followee) {
