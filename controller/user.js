@@ -17,6 +17,14 @@ class UserController {
         console.log(e)
     }
   }
+  async getUserFirebase(req, res) {
+    try {
+      const user = await userService.getUserFirebase(req.params)
+      res.status(201).json(user)
+    } catch (e) {
+      console.log(e)
+    }
+  }
   async updateUser(req, res) {
     try {
         console.log(req.body)

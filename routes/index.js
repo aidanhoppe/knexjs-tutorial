@@ -19,7 +19,8 @@ router.post('/brand', brandController.createBrand)
 router.post('/category', categoryController.createCategory)
 
 router.post('/user', userController.createUser)
-router.get('/user/:firebase_id', userController.getUser)
+router.get('/user/:user_id', userController.getUser)
+router.get('/user/:firebase_id/firebase', userController.getUserFirebase)
 router.put('/user/:firebase_id', userController.updateUser)
 router.get('/user/:user_id/listings', userController.getUserListings)
 

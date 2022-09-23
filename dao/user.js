@@ -13,7 +13,12 @@ class UserDAO {
 
         return id;
     }
-    async getUser(firebase_id) {
+    async getUser(user_id) {
+        const [user] = await db('user')
+        .where('user_id', user_id).select()
+        return user
+    }
+    async getUserFirebase(firebase_id) {
         const [user] = await db('user')
         .where('firebase_id', firebase_id).select()
         return user
