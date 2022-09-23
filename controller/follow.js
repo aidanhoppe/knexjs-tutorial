@@ -11,7 +11,7 @@ class FollowController {
   }
   async getFollow(req, res) {
     try {
-      const result = await followService.getFollow(req.body)
+      const result = await followService.getFollow(req.params)
       res.status(201).json(result)
     } catch (e) {
       console.log(e)
