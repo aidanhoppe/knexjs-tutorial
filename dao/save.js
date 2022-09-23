@@ -29,7 +29,7 @@ class SaveDAO {
     .where('user_id', user_id)
     .select()
     .innerJoin('listing', 'save.listing_id', 'listing.listing_id')
-    .orderBy('created_at', 'desc')
+    .orderBy('save.created_at', 'desc')
     return res
   }
 }
