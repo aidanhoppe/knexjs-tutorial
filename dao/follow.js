@@ -8,14 +8,14 @@ class FollowDAO {
         follower,
         followee
       })
-    return result;
+    return result>0;
   }
   async getFollow(follower, followee) {
     const result = await db('follow')
     .where('follower', follower)
     .andWhere('followee', followee)
     .select()
-    return result>0
+    return result
   }
 }
 
