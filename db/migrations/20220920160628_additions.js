@@ -2,7 +2,7 @@ const { references } = require('../../lib/tableUtils');
 const { table } = require('../db');
 
 exports.up = async (knex) => {
-    await knex.schema.createTable('follows', (table) => {
+    await knex.schema.createTable('follow', (table) => {
         references(table, 'user', undefined, 'follower')
         references(table, 'user', undefined, 'followee')
         table.primary(['follower', 'followee'])
@@ -123,5 +123,5 @@ exports.down = async (knex) => {
   await knex.schema.dropTable('payout')
   await knex.schema.dropTable('blocked')
   await knex.schema.dropTable('cart')
-  await knex.schema.dropTable('follows')
+  await knex.schema.dropTable('follow')
 };
