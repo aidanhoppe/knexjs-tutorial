@@ -8,6 +8,7 @@ const saveController = require('../controller/save')
 const followController = require('../controller/follow')
 const payoutController = require('../controller/payout')
 const available_payoutController = require('../controller/available_payout')
+const chatController = require('../controller/chat')
 const { generateUploadURL } = require('../s3')
 
 const router = express.Router();
@@ -44,4 +45,8 @@ router.put('/available_payout/reset', available_payoutController.resetPayout)
 router.post('/available_payout', available_payoutController.createPayout)
 router.get('/available_payout', available_payoutController.getPayout)
 router.put('/available_payout/add', available_payoutController.addToPayout)
+router.post('/available_payout/execute', available_payoutController.executePayout)
+
+router.get('/chat/:user_id', chatController.getChats)
+router.post('/chat', chatController.createChat)
 module.exports = router;

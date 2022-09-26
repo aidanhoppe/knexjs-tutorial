@@ -33,6 +33,10 @@ class Available_PayoutController {
         console.error(err);
       }
   }
+  //TODO
+//   async executePayout(req, res) {
+
+//   }
 }
 
 module.exports = new Available_PayoutController();
