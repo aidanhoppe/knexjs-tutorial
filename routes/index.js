@@ -43,5 +43,5 @@ router.post('/payout', payoutController.createPayout)
 router.put('/available_payout/reset', available_payoutController.resetPayout)
 router.post('/available_payout', available_payoutController.createPayout)
 router.get('/available_payout', available_payoutController.getPayout)
-router.put('/available_payout/update', available_payoutController.addToPayout)
+router.put('/available_payout/add', available_payoutController.addToPayout)
 module.exports = router;

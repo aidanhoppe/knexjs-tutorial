@@ -20,9 +20,9 @@ class Available_PayoutService {
     );
   }
   addToPayout(payoutDto) {
-    const { payout_id, amount } = payoutDto
+    const { user_id, amount } = payoutDto
     return available_payoutDAO.addToPayout(
-        payout_id, amount
+        user_id, amount
     )
   }
 }

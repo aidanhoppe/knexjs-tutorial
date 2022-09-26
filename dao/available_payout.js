@@ -24,9 +24,9 @@ class Available_PayoutDAO {
       .returning('amount');
     return amt;
   }
-  async addToPayout(payout_id, amount) {
+  async addToPayout(user_id, amount) {
     const [amt] = await db('available_payout')
-      .where('payout_id', payout_id)
+      .where('user_id', user_id)
       .increment('amount', amount)
       .returning('amount')
     return amt
