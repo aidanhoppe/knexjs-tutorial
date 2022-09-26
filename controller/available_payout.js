@@ -27,7 +27,7 @@ class Available_PayoutController {
   }
   async addToPayout(req, res) {
     try {
-        const amt = await available_payoutService.getPayout(req.query);
+        const amt = await available_payoutService.addToPayout(req.body);
         res.status(201).json(amt);
       } catch (err) {
         console.error(err);
