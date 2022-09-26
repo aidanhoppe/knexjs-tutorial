@@ -29,6 +29,12 @@ class ListingDAO {
     .offset(startIndex)
     return results
   }
+  async getListing(listing_id) {
+    const [listing] = await db('listing')
+    .where('listing_id', listing_id)
+    .select()
+    return listing
+  }
 }
 
 module.exports = new ListingDAO();

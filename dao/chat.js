@@ -6,6 +6,7 @@ class ChatDAO {
     .where('buyer_id', user_id)
     .orWhere('seller_id', user_id)
     .select()
+    .orderBy('updated_at', 'desc')
     return chats;
   }
   async createChat(seller_id, buyer_id, listing_id) {

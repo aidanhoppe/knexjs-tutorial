@@ -17,6 +17,14 @@ class ListingController {
       console.log(e)
     }
   }
+  async getListing(req, res) {
+    try {
+      const listing = await listingService.getListing(req.query.listing_id)
+      res.status(201).json(listing)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 module.exports = new ListingController();

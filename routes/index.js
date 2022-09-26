@@ -9,6 +9,7 @@ const followController = require('../controller/follow')
 const payoutController = require('../controller/payout')
 const available_payoutController = require('../controller/available_payout')
 const chatController = require('../controller/chat')
+const messageController = require('../controller/message')
 const { generateUploadURL } = require('../s3')
 
 const router = express.Router();
@@ -49,4 +50,8 @@ router.put('/available_payout/add', available_payoutController.addToPayout)
 
 router.get('/chat/:user_id', chatController.getChats)
 router.post('/chat', chatController.createChat)
+
+router.post('/message', messageController.createMessage)
+router.get('/message/last', messageController.getLastMessage)
+router.get('/message/chat/:chat_id', messageController.getMessagesByChat)
 module.exports = router;
