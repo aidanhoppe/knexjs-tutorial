@@ -22,7 +22,7 @@ class ListingService {
     return listingDAO.getNewListings(parseInt(page), parseInt(limit))
   }
   getListing(listing_id) {
-    return listingDAO.getLisitng(listing_id)
+    return listingDAO.getListing(listing_id)
   }
 }
 
