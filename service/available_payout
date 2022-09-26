@@ -19,6 +19,12 @@ class Available_PayoutService {
         user_id
     );
   }
+  addToPayout(payoutDto) {
+    const { payout_id, amount } = payoutDto
+    return available_payoutDAO.addToPayout(
+        payout_id, amount
+    )
+  }
 }
 
 module.exports = new Available_PayoutService();

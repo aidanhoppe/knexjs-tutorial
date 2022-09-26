@@ -11,19 +11,27 @@ class Available_PayoutController {
   }
   async resetPayout(req, res) {
     try {
-      const id = await available_payoutService.resetPayout(req.query);
-      res.status(201).json(id);
+      const amt = await available_payoutService.resetPayout(req.query);
+      res.status(201).json(amt);
     } catch (err) {
       console.error(err);
     }
   }
   async getPayout(req, res) {
     try {
-      const id = await available_payoutService.getPayout(req.query);
-      res.status(201).json(id);
+      const amt = await available_payoutService.getPayout(req.query);
+      res.status(201).json(amt);
     } catch (err) {
       console.error(err);
     }
+  }
+  async addToPayout(req, res) {
+    try {
+        const amt = await available_payoutService.getPayout(req.query);
+        res.status(201).json(amt);
+      } catch (err) {
+        console.error(err);
+      }
   }
 }
 
