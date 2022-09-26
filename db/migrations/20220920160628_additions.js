@@ -1,5 +1,4 @@
 const { references } = require('../../lib/tableUtils');
-const { table } = require('../db');
 
 exports.up = async (knex) => {
     await knex.schema.createTable('follow', (table) => {
@@ -24,7 +23,7 @@ exports.up = async (knex) => {
     await knex.schema.createTable('payout', (table) => {
         table.increments('payout_id')
         references(table, 'user')
-        table.float('amount')
+        table.float('amount').notNullable()
         table.timestamp('requested').defaultTo(knex.fn.now()).notNullable()
         table.timestamp('completed')
         table.timestamps(true,true)

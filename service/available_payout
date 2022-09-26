@@ -1,0 +1,24 @@
+const available_payoutDAO = require('../dao/available_payout');
+
+class Available_PayoutService {
+  createPayout(payoutDto) {
+    const { user_id } = payoutDto;
+    return available_payoutDAO.createPayout(
+        user_id
+    );
+  }
+  getPayout(payoutDto) {
+    const { user_id } = payoutDto;
+    return available_payoutDAO.getPayout(
+        user_id
+    );
+  }
+  resetPayout(payoutDto) {
+    const { user_id } = payoutDto;
+    return available_payoutDAO.resetPayout(
+        user_id
+    );
+  }
+}
+
+module.exports = new Available_PayoutService();
