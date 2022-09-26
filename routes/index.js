@@ -36,11 +36,11 @@ router.get('/follow/:follower/:followee', followController.getFollow)
 router.post('/follow', followController.createFollow)
 router.delete('/follow', followController.deleteFollow)
 
-router.put('/payout/reset', payoutController.resetPayout)
+router.put('/payout/reset', payoutController.updatePayout)
 router.get('/payout/:user_id', payoutController.getPayout)
 router.post('/payout', payoutController.createPayout)
 
-router.put('/available_payout', available_payoutController.resetPayout)
+router.put('/available_payout/reset', available_payoutController.resetPayout)
 router.post('/available_payout', available_payoutController.createPayout)
 router.get('/available_payout', available_payoutController.getPayout)
 module.exports = router;
