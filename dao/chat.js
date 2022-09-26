@@ -14,7 +14,8 @@ class ChatDAO {
         seller_id,
         buyer_id,
         listing_id
-    })
+    }).returning('chat_id')
+    return id
   }
 }
 
