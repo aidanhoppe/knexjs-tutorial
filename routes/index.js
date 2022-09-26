@@ -45,7 +45,7 @@ router.put('/available_payout/reset', available_payoutController.resetPayout)
 router.post('/available_payout', available_payoutController.createPayout)
 router.get('/available_payout', available_payoutController.getPayout)
 router.put('/available_payout/add', available_payoutController.addToPayout)
-router.post('/available_payout/execute', available_payoutController.executePayout)
+// router.post('/available_payout/execute', available_payoutController.executePayout)
 
 router.get('/chat/:user_id', chatController.getChats)
 router.post('/chat', chatController.createChat)
