@@ -11,7 +11,7 @@ class PayoutController {
   }
   async getPayout(req, res) {
     try {
-      const payouts = await payoutService.getPayout(req.query);
+      const payouts = await payoutService.getPayout(req.params);
       res.status(201).json(payouts);
     } catch (err) {
       console.error(err);
