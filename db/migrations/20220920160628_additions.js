@@ -41,6 +41,8 @@ exports.up = async (knex) => {
         table.increments('chat_id')
         references(table, 'user', undefined, 'seller_id')
         references(table, 'user', undefined, 'buyer_id')
+        references(table, 'user', notNullable=false, 'last_viewer')
+        references(table, 'user', notNullable=false, 'last_updater')
         references(table, 'listing')
         table.boolean('visible').defaultTo(true)
         table.timestamps(true, true)
@@ -48,8 +50,8 @@ exports.up = async (knex) => {
     await knex.schema.createTable('offer', (table) => {
         table.increments('offer_id')
         references(table, 'chat')
-        table.float('price')
-        table.enu('status', ['pending', 'accepted', 'rejected'])
+        table.float('price').notNullable()
+        table.enu('status', ['pending', 'accepted', 'rejected', 'canceled']).defaultTo('pending')
         table.timestamps(true, true)
     })
     await knex.schema.createTable('transaction', (table) => {

@@ -11,6 +11,7 @@ const available_payoutController = require('../controller/available_payout')
 const chatController = require('../controller/chat')
 const messageController = require('../controller/message')
 const offerController = require('../controller/offer')
+const cartController = require('../controller/cart')
 const { generateUploadURL } = require('../s3')
 
 const router = express.Router();
@@ -50,6 +51,8 @@ router.get('/available_payout', available_payoutController.getPayout)
 router.put('/available_payout/add', available_payoutController.addToPayout)
 // router.post('/available_payout/execute', available_payoutController.executePayout)
 
+router.put('/chat/updatelastviewer', chatController.updateLastViewer)
+router.put('/chat/updatetimestamp', chatController.updateTimestamp)
 router.get('/chat/:user_id', chatController.getChats)
 router.post('/chat', chatController.createChat)
 
@@ -60,4 +63,7 @@ router.get('/message/chat/:chat_id', messageController.getMessagesByChat)
 router.post('/offer', offerController.createOffer)
 router.get('/offer/chat/:chat_id', offerController.getOffersByChat)
 router.get('/offer/last', offerController.getLastOffer)
+router.put('/offer/update', offerController.updateOffer)
+
+router.post('/cart', cartController.createCart)
 module.exports = router;

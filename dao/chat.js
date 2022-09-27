@@ -18,6 +18,21 @@ class ChatDAO {
     }).returning('chat_id')
     return id
   }
+  async updateLastViewer(chat_id, last_viewer) {
+    const [result] = await db('chat')
+    .where('chat_id', chat_id)
+    .update({
+        last_viewer
+    })
+  }
+  async updateTimestamp(chat_id, last_viewer, last_updater) {
+    const [result] = await db('chat')
+    .where('chat_id', chat_id)
+    .update({
+        last_viewer,
+        last_updater
+    })
+  }
 }
 
 module.exports = new ChatDAO();

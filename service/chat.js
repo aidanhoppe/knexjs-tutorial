@@ -15,6 +15,14 @@ class ChatService {
         listing_id
     )
   }
+  updateLastViewer(chatDto) {
+    const { chat_id, last_viewer } = chatDto
+    return chatDAO.updateLastViewer(chat_id, last_viewer)
+  }
+  updateTimestamp(chatDto) {
+    const { chat_id, last_viewer, last_updater } = chatDto
+    return chatDAO.updateTimestamp(chat_id, last_viewer, last_updater)
+  }
 }
 
 module.exports = new ChatService();

@@ -24,6 +24,14 @@ class OfferDAO {
         .orderBy('updated_at', 'desc')
         return offers
     }
+    async updateOffer(offer_id, status) {
+        const result = await db('offer')
+        .where('offer_id', offer_id)
+        .update({
+            status
+        }).returning('status')
+        return result
+    }
 }
 
 module.exports = new OfferDAO();

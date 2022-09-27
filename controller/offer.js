@@ -25,6 +25,14 @@ class OfferController {
             console.log(e)
         }
     }
+    async updateOffer(req, res) {
+        try {
+            const id = await offerService.cancelOffer(req.query)
+            res.status(201).json(id)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 }
 
 module.exports = new OfferController()

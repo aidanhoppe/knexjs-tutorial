@@ -13,6 +13,10 @@ class OfferService {
         const { chat_id } = offerDto
         return offerDAO.getOffersByChat(chat_id)
     }
+    updateOffer(offerDto) {
+        const { offer_id, status } = offerDto
+        return offerDAO.updateOffer(offer_id, status)
+    }
 }
 
 module.exports = new OfferService();

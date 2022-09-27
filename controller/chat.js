@@ -17,6 +17,22 @@ class ChatController {
             console.log(e)
         }
     }
+    async updateLastViewer(req, res) {
+        try {
+            const result = await chatService.updateLastViewer(req.body)
+            res.status(201).json(result)
+        } catch(e) {
+            console.log(e)
+        }
+    }
+    async updateTimestamp(req, res) {
+        try {
+            const result = await chatService.updateTimestamp(req.body)
+            res.status(201).json(result)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 }
 
 module.exports = new ChatController()
