@@ -12,6 +12,7 @@ const chatController = require('../controller/chat')
 const messageController = require('../controller/message')
 const offerController = require('../controller/offer')
 const cartController = require('../controller/cart')
+const reportController = require('../controller/report')
 const { generateUploadURL } = require('../s3')
 
 const router = express.Router();
@@ -66,4 +67,6 @@ router.get('/offer/last', offerController.getLastOffer)
 router.put('/offer/update', offerController.updateOffer)
 
 router.post('/cart', cartController.createCart)
+
+router.post('/report', reportController.createReport)
 module.exports = router;
