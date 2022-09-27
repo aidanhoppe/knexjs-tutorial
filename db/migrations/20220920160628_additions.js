@@ -30,7 +30,7 @@ exports.up = async (knex) => {
     })
     await knex.schema.createTable('report', (table) => {
         table.increments('report_id')
-        references(table, 'user', undefined, 'offensee')
+        references(table, 'user', undefined, 'offender')
         references(table, 'user', undefined, 'reporter')
         // TODO maybe change to enum?
         table.string('category')
