@@ -29,7 +29,7 @@ class OfferDAO {
         .where('offer_id', offer_id)
         .update({
             status,
-            updated_at: knex.fn.now()
+            updated_at: new Date()
         }).returning('status')
         return result
     }

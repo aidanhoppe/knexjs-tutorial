@@ -22,7 +22,7 @@ class MessageDAO {
         const messages = await db('message')
         .where('chat_id', chat_id)
         .select()
-        .orderBy('updated_at', 'desc')
+        .orderBy('created_at', 'desc')
         return messages
     }
 }

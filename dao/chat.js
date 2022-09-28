@@ -33,7 +33,7 @@ class ChatDAO {
     .where('chat_id', chat_id)
     .update({
         last_viewer,
-        updated_at: knex.fn.now()
+        updated_at: new Date()
     })
     return result
   }
@@ -43,7 +43,7 @@ class ChatDAO {
     .update({
         last_viewer,
         last_updater,
-        updated_at: knex.fn.now()
+        updated_at: new Date()
     })
     return result
   }
