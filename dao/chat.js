@@ -31,7 +31,7 @@ class ChatDAO {
     const [result] = await db('chat')
     .where('chat_id', chat_id)
     .update({
-        last_viewer
+        last_viewer: last_viewer
     })
     return result
   }
