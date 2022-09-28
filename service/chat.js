@@ -15,6 +15,14 @@ class ChatService {
         listing_id
     )
   }
+  getChat(chatDto) {
+    const { buyer_id, seller_id, listing_id } = chatDto
+    return chatDAO.getChat(
+        buyer_id,
+        seller_id,
+        listing_id
+    )
+  }
   updateLastViewer(chatDto) {
     const { chat_id, last_viewer } = chatDto
     return chatDAO.updateLastViewer(chat_id, last_viewer)

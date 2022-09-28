@@ -1,3 +1,4 @@
+const { andWhere } = require('../db/db');
 const db = require('../db/db');
 
 class ChatDAO {
@@ -17,6 +18,14 @@ class ChatDAO {
         listing_id
     }).returning('chat_id')
     return id
+  }
+  async getChat(buyer_id, seller_id, listing_id) {
+    const [chat] = await db('chat')
+    .where('buyer_id', buyer_id)
+    .andWhere('seller_id', seller_id)
+    .andWhere('listing_id', listing_id)
+    .select()
+    return chat
   }
   async updateLastViewer(chat_id, last_viewer) {
     const [result] = await db('chat')

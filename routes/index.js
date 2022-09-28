@@ -56,6 +56,7 @@ router.put('/chat/updatelastviewer', chatController.updateLastViewer)
 router.put('/chat/updatetimestamp', chatController.updateTimestamp)
 router.get('/chat/:user_id', chatController.getChats)
 router.post('/chat', chatController.createChat)
+router.get('/chat', chatController.getChat)
 
 router.post('/message', messageController.createMessage)
 router.get('/message/last', messageController.getLastMessage)

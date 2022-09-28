@@ -17,6 +17,14 @@ class ChatController {
             console.log(e)
         }
     }
+    async getChat(req, res) {
+        try {
+            const chat = await chatService.getChat(req.query)
+            res.status(201).json(chat)
+        } catch (e) {
+            console.log(e)
+        }
+    }
     async updateLastViewer(req, res) {
         try {
             const result = await chatService.updateLastViewer(req.body)
