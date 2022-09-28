@@ -32,7 +32,8 @@ class ChatDAO {
     const [result] = await db('chat')
     .where('chat_id', chat_id)
     .update({
-        last_viewer
+        last_viewer,
+        updated_at: knex.fn.now()
     })
     return result
   }
@@ -41,7 +42,8 @@ class ChatDAO {
     .where('chat_id', chat_id)
     .update({
         last_viewer,
-        last_updater
+        last_updater,
+        updated_at: knex.fn.now()
     })
     return result
   }

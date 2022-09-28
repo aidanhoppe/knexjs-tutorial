@@ -34,7 +34,8 @@ class UserDAO {
             phone, 
             verified_phone, 
             shop_name, 
-            address_id
+            address_id,
+            updated_at: knex.fn.now()
         })
     }
     async getUserListings(user_id) {

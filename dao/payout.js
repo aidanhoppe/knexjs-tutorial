@@ -20,7 +20,8 @@ class PayoutDAO {
     const [amt] = await db('payout')
       .where('payout_id', payout_id)
       .update({
-        completed: knex.fn.now()
+        completed: knex.fn.now(),
+        updated_at: knex.fn.now()
       })
       .returning('amount');
     return amt;

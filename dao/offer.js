@@ -28,7 +28,8 @@ class OfferDAO {
         const result = await db('offer')
         .where('offer_id', offer_id)
         .update({
-            status
+            status,
+            updated_at: knex.fn.now()
         }).returning('status')
         return result
     }

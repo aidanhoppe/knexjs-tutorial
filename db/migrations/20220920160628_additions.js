@@ -79,7 +79,7 @@ exports.up = async (knex) => {
         references(table, 'chat')
         references(table, 'user', undefined, 'sender_id')
         table.string('body', 400)
-        table.boolean('read').defaultTo(false)
+        // table.boolean('read').defaultTo(false)
         table.timestamps(true, true)
     })
     await knex.schema.createTable('log', (table) => {

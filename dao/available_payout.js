@@ -19,7 +19,8 @@ class Available_PayoutDAO {
     const [amt] = await db('available_payout')
       .where('user_id', user_id)
       .update({
-        amount: 0
+        amount: 0,
+        updated_at: knex.fn.now()
       })
       .returning('amount');
     return amt;
