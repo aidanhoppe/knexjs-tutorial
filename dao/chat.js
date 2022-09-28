@@ -28,10 +28,11 @@ class ChatDAO {
     return chat
   }
   async updateLastViewer(chat_id, last_viewer) {
+    console.log('chat_id: ', chat_id, "  last_viewer: ", last_viewer)
     const [result] = await db('chat')
     .where('chat_id', chat_id)
     .update({
-        last_viewer: last_viewer
+        last_viewer
     })
     return result
   }
