@@ -24,6 +24,7 @@ class ChatDAO {
     .update({
         last_viewer
     })
+    return result
   }
   async updateTimestamp(chat_id, last_viewer, last_updater) {
     const [result] = await db('chat')
@@ -32,6 +33,7 @@ class ChatDAO {
         last_viewer,
         last_updater
     })
+    return result
   }
 }
 
