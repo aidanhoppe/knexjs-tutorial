@@ -34,14 +34,6 @@ class UserController {
         console.log(e)
     }
   }
-  async getUserListings(req, res) {
-    try {
-      const listings = await userService.getUserListings(req.params)
-      res.status(201).json(listings)
-    } catch (e) {
-      console.log(e)
-    }
-  }
 }
 
 module.exports = new UserController();

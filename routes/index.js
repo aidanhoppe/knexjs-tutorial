@@ -19,6 +19,7 @@ const router = express.Router();
 router.post('/listing', listingController.createListing);
 router.get('/listing', listingController.getListing)
 router.get('/listing/new_listings', listingController.getNewListings)
+router.get('listing/user/:user_id', listingController.getUserListings)
 router.get('/s3Url', async (req, res) => {
     const url = await generateUploadURL()
     res.send({url})
@@ -31,7 +32,7 @@ router.post('/user', userController.createUser)
 router.get('/user/:user_id', userController.getUser)
 router.get('/user/:firebase_id/firebase', userController.getUserFirebase)
 router.put('/user/:firebase_id', userController.updateUser)
-router.get('/user/:user_id/listings', userController.getUserListings)
+// router.get('/user/:user_id/listings', userController.getUserListings)
 
 router.post('/save', saveController.createSave)
 router.delete('/save/:listing_id/:user_id', saveController.deleteSave)

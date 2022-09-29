@@ -24,6 +24,10 @@ class ListingService {
   getListing(listing_id) {
     return listingDAO.getListing(listing_id)
   }
+  getUserListings(param_id) {
+    const { user_id } = param_id
+    return listingDAO.getUserListings(user_id)
+  }
 }
 
 module.exports = new ListingService();
