@@ -19,7 +19,7 @@ const router = express.Router();
 router.post('/listing', listingController.createListing);
 router.get('/listing', listingController.getListing)
 router.get('/listing/new_listings', listingController.getNewListings)
-router.get('listing/user/:user_id', listingController.getUserListings)
+router.get('/listing/user/:user_id', listingController.getUserListings)
 router.get('/s3Url', async (req, res) => {
     const url = await generateUploadURL()
     res.send({url})

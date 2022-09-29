@@ -42,7 +42,7 @@ class ListingDAO {
     .orderBy('created_at', 'desc')
     .select()
     return listings
-}
+  }
 }
 
 module.exports = new ListingDAO();

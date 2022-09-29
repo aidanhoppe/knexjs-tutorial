@@ -24,8 +24,8 @@ class ListingService {
   getListing(listing_id) {
     return listingDAO.getListing(listing_id)
   }
-  getUserListings(param_id) {
-    const { user_id } = param_id
+  getUserListings(param) {
+    const { user_id } = param
     return listingDAO.getUserListings(user_id)
   }
 }
