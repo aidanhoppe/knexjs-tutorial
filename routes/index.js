@@ -17,6 +17,7 @@ const { generateUploadURL } = require('../s3')
 
 const router = express.Router();
 router.post('/listing', listingController.createListing)
+router.put('/listing', listingController.updateListing)
 router.get('/listing', listingController.getListing)
 router.delete('/listing', listingController.deleteListing)
 router.get('/listing/new_listings', listingController.getNewListings)

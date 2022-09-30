@@ -18,6 +18,23 @@ class ListingService {
         accepting_offers
     );
   }
+  updateListing(listingDto) {
+    const { listing_id, title, price, shipping, description, condition, thumbnail, photos, brand_id, model, category_id, accepting_offers } = listingDto;
+    return listingDAO.updateListing(
+        listing_id, 
+        title, 
+        price,
+        shipping,
+        description,
+        condition,
+        thumbnail,
+        photos,
+        brand_id,
+        model,
+        category_id,
+        accepting_offers
+    );
+  }
   getNewListings(page, limit) {
     return listingDAO.getNewListings(parseInt(page), parseInt(limit))
   }

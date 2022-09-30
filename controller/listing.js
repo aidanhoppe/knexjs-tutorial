@@ -9,6 +9,14 @@ class ListingController {
       console.error(err);
     }
   }
+  async updateListing(req, res) {
+    try {
+      const id = await listingService.updateListing(req.body)
+      res.status(201).json(id)
+    } catch (e) {
+      console.log(e)
+    }
+  }
   async getNewListings(req, res) {
     try {
       const listings = await listingService.getNewListings(req.query.page, req.query.limit)

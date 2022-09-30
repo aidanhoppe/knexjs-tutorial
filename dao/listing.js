@@ -20,6 +20,25 @@ class ListingDAO {
       .returning('listing_id');
     return id;
   }
+  async updateListing(listing_id, title, price, shipping, description, condition, thumbnail, photos, brand_id, model, category_id, accepting_offers) {
+    const [id] = await db('listing')
+      .where('listing_id', listing_id)
+      .update({
+        title, 
+        price,
+        shipping,
+        description,
+        condition,
+        thumbnail,
+        photos,
+        brand_id,
+        model,
+        category_id,
+        accepting_offers
+      })
+      .returning('listing_id');
+    return id;
+  }
   async getNewListings(page, limit) {
     const startIndex = (page - 1) * limit
     const results = await db('listing')
