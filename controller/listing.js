@@ -33,6 +33,14 @@ class ListingController {
       console.log(e)
     }
   }
+  async deleteListing(req, res) {
+    try {
+      const id = await listingService.deleteListing(req.body)
+      res.status(201).json(id)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 module.exports = new ListingController();

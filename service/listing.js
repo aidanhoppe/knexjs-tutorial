@@ -24,6 +24,9 @@ class ListingService {
   getListing(listing_id) {
     return listingDAO.getListing(listing_id)
   }
+  deleteListing(listing_id) {
+    return listingDAO.deleteListing(listing_id)
+  }
   getUserListings(param) {
     const { user_id } = param
     return listingDAO.getUserListings(user_id)

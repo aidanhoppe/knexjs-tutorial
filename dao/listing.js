@@ -35,6 +35,12 @@ class ListingDAO {
     .select()
     return listing
   }
+  async deleteListing(listing_id) {
+    const [id] = await db('listing')
+    .where('listing_id', listing_id)
+    .del(['listing_id'])
+    return id
+  }
   async getUserListings(user_id) {
     const listings = await db('listing')
     .where('seller_id', user_id)
