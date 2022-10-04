@@ -49,9 +49,16 @@ class ListingController {
       console.log(e)
     }
   }
+  async unlist(req, res) {
+    try {
+      const id = await listingService.unlist(req.query)
+      res.status(201).json(id)
+    } catch (e) {
+      console.log(e)
+    }
+  }
   async unlistMultiple(req, res) {
     try {
-      console.log(req.body)
       const result = await listingService.unlistMultiple(req.body)
       res.status(201).json(result)
     } catch (e) {

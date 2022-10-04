@@ -39,8 +39,16 @@ class ListingDAO {
       .returning('listing_id');
     return id;
   }
+  async unlist(listing_id) {
+    const [id] = await db('listing')
+    .where('listing_id', listing_id)
+    .update({
+      status: 'Archived'
+    })
+    .returning('listing_id')
+    return(id)
+  }
   async unlistMultiple(listing_ids) {
-    console.log(listing_ids)
     const result = await db('listing')
     .whereIn('listing_id', listing_ids)
     .update({

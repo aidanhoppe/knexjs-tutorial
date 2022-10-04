@@ -35,6 +35,10 @@ class ListingService {
         accepting_offers
     );
   }
+  unlist(listingDto) {
+    const { listing_id } = listingDto
+    return listingDAO.unlist(listing_id)
+  }
   unlistMultiple(listingIdArray) {
     return listingDAO.unlistMultiple(listingIdArray)
   }
