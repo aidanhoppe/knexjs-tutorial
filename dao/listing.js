@@ -50,6 +50,8 @@ class ListingDAO {
   async getNewListings(page, limit) {
     const startIndex = (page - 1) * limit
     const results = await db('listing')
+    .where('status', 'Active')
+    .orWhere('status', 'Sold')
     .orderBy('created_at', 'desc')
     .select()
     .limit(limit)
