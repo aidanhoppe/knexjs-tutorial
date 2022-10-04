@@ -40,6 +40,7 @@ class ListingDAO {
     return id;
   }
   async unlistMultiple(listing_ids) {
+    console.log(listing_ids)
     const result = await db('listing')
     .whereIn('listing_id', listing_ids)
     .update({
