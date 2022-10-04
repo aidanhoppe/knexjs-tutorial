@@ -35,6 +35,10 @@ class ListingService {
         accepting_offers
     );
   }
+  unlistMultiple(listingDto) {
+    console.log('listingDto: ', listingDto)
+    return listingDAO.unlistMultiple(listingDto)
+  }
   getNewListings(page, limit) {
     return listingDAO.getNewListings(parseInt(page), parseInt(limit))
   }

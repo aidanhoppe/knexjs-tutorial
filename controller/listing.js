@@ -49,6 +49,14 @@ class ListingController {
       console.log(e)
     }
   }
+  async unlistMultiple(req, res) {
+    try {
+      const result = await listingService.unlistMultiple(req.body)
+      res.status(201).json(result)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 module.exports = new ListingController();

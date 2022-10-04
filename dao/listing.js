@@ -39,6 +39,14 @@ class ListingDAO {
       .returning('listing_id');
     return id;
   }
+  async unlistMultiple(listing_ids) {
+    const [result] = await db('listing')
+    .whereIn('listing_id', listing_ids)
+    .update({
+      status: 'Archived'
+    })
+    return result
+  }
   async getNewListings(page, limit) {
     const startIndex = (page - 1) * limit
     const results = await db('listing')
