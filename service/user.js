@@ -34,6 +34,17 @@ class UserService {
         address_id
     )
   }
+  async updateUserShop(userDto) {
+    const { user_id, shop_photo, shop_name, shop_policy, default_shipping, address_id } = userDto
+    return userDAO.updateUserShop(
+      user_id,
+      shop_photo,
+      shop_name,
+      shop_policy,
+      default_shipping,
+      address_id
+    )
+  }
 }
 
 module.exports = new UserService();

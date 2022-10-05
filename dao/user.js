@@ -38,6 +38,18 @@ class UserDAO {
             updated_at: new Date()
         })
     }
+    async updateUserShop(user_id, shop_photo, shop_name, shop_policy, default_shipping, address_id) {
+        await db('user')
+        .where('user_id', user_id)
+        .update({
+            shop_photo,
+            shop_name,
+            shop_policy,
+            default_shipping,
+            address_id,
+            updated_at: new Date()
+        })
+    }
 }
 
 module.exports = new UserDAO();
