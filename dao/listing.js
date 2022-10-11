@@ -116,10 +116,10 @@ class ListingDAO {
       })
     }
     if(price_min) {
-      knexQuery.andWhere('price', '>=', price_min)
+      knexQuery.andWhere('price', '>=', parseInt(price_min))
     }
     if(price_max) {
-      knexQuery.andWhere('price', '<=', price_max)
+      knexQuery.andWhere('price', '<=', parseInt(price_max))
     }
     return knexQuery
   }
