@@ -67,7 +67,7 @@ class ListingController {
   }
   async getFilteredListings(req, res) {
     try {
-      console.log('req.query: ', req.query)
+      console.log('req.query: ', req?.query)
       const { test } = req.query
       console.log('test: ', test)
       const result = await listingService.getFilteredListings(req.query)
