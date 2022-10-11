@@ -87,6 +87,42 @@ class ListingDAO {
     .select()
     return listings
   }
+  async getFilteredListings(searches, brands, categories, conditions, price_min, price_max) {
+    const knexQuery = db('listing')
+    .innerJoin('category', 'listing.category_id', 'category.category_id')
+    .innerJoin('brand', 'listing.brand_id', 'brand.brand_id')
+
+    if(searches) {
+      searches.forEach((s) => {
+        knexQuery.orWhere('description', 'like', `%${s}%`)
+        knexQuery.orWhere('brand.name', s)
+        knexQuery.orWhere('category.name', s)
+      })
+    }
+    //AND -- need to make sure (searches or or or...) AND (brands or or or...)
+    if(brands) {
+      brands.forEach((b) => {
+        knexQuery.orWhere('brand.name', b)
+      })
+    }
+    if(conditions) {
+      conditions.forEach((c) => {
+        knexQuery.orWhere('condition', c)
+      })
+    }
+    if(categories) {
+      categories.forEach((c) => {
+        knexQuery.orWhere('category.name', c)
+      })
+    }
+    if(price_min) {
+      knexQuery.andWhere('price', '>=', price_min)
+    }
+    if(price_max) {
+      knexQuery.andWhere('price', '<=', price_max)
+    }
+    return knexQuery
+  }
 }
 
 module.exports = new ListingDAO();
