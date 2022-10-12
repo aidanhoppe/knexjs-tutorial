@@ -135,6 +135,8 @@ class ListingDAO {
     .select('*', 
     'brand.name AS brand_name', 
     'category.name AS category_name', 
+    'listing.created_at AS created_at',
+    'listing.updated_at AS updated_at',
     'brand.created_at AS brand_created_at', 
     'category.created_at AS category_created_at')
     return knexQuery
