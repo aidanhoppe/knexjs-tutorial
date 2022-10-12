@@ -127,7 +127,7 @@ class ListingDAO {
     if(price_max) {
       knexQuery.andWhere('price', '<=', parseInt(price_max))
     }
-    knexQuery.orderBy('created_at', 'desc')
+    knexQuery.orderBy('listing.created_at', 'desc')
     return knexQuery
   }
 }
