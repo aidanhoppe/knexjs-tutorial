@@ -87,12 +87,19 @@ class ListingDAO {
     .select()
     return listings
   }
-  async getFilteredListings(searches, brands, categories, conditions, price_min, price_max) {
+  async getFilteredListings(searches, brands, categories, conditions, price_min, price_max, sold, page, limit) {
     const knexQuery = db('listing')
     .innerJoin('category', 'listing.category_id', 'category.category_id')
     .innerJoin('brand', 'listing.brand_id', 'brand.brand_id')
     //need to join with created_at, updated_at, name as aliases OR just name and dont include the timestamps
+    
+    //add -- i forgot
 
+    if(sold) {
+      knexQuery.where('status', 'Sold')
+    } else {
+      knexQuery.where('status', 'Active')
+    }
     if(searches) {
       knexQuery.where(function() {
         searches.forEach((s) => {
@@ -139,6 +146,10 @@ class ListingDAO {
     'listing.updated_at AS updated_at',
     'brand.created_at AS brand_created_at', 
     'category.created_at AS category_created_at')
+    if(page&&limit) {
+      const startIndex = (page - 1) * limit
+      knexQuery.limit(limit).offset(startIndex)
+    }
     return knexQuery
   }
 }
