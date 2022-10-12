@@ -97,30 +97,32 @@ class ListingDAO {
       knexQuery.where(function() {
         searches.forEach((s) => {
           this.orWhere('description', 'like', `%${s}%`)
+          this.orWhere('title', 'like', `%${s}%`)
           this.orWhere('brand.name', s)
           this.orWhere('category.name', s)
-          // knexQuery.orWhere('description', 'like', `%${s}%`)
-          // knexQuery.orWhere('brand.name', s)
-          // knexQuery.orWhere('category.name', s)
         })
       })
     }
     //AND -- need to make sure (searches or or or...) AND (brands or or or...)
     if(brands) {
-      brands.forEach((b) => {
-        knexQuery.where(function() {
-          knexQuery.orWhere('brand.name', b)
+      knexQuery.where(function() {
+        brands.forEach((b) => {
+          this.orWhere('brand.name', b)
         })
       })
     }
     if(conditions) {
-      conditions.forEach((c) => {
-        knexQuery.orWhere('condition', c)
+      knexQuery.where(function() {
+        conditions.forEach((c) => {
+          this.orWhere('condition', c)
+        })
       })
     }
     if(categories) {
-      categories.forEach((c) => {
-        knexQuery.orWhere('category.name', c)
+      knexQuery.where(function() {
+        categories.forEach((c) => {
+          knexQuery.orWhere('category.name', c)
+        })
       })
     }
     if(price_min) {
@@ -130,6 +132,11 @@ class ListingDAO {
       knexQuery.andWhere('price', '<=', parseInt(price_max))
     }
     knexQuery.orderBy('listing.created_at', 'desc')
+    .select('*', 
+    'brand.name AS brand_name', 
+    'category.name AS category_name', 
+    'brand.created_at AS brand_created_at', 
+    'category.created_at AS category_created_at')
     return knexQuery
   }
 }
