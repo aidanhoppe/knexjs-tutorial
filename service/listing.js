@@ -56,8 +56,8 @@ class ListingService {
     return listingDAO.getUserListings(user_id)
   }
   getFilteredListings(queryDto) {
-    const { searches, brands, categories, conditions, price_min, price_max } = queryDto
-    return listingDAO.getFilteredListings( searches, brands, categories, conditions, price_min, price_max )
+    const { searches, brands, categories, conditions, price_min, price_max, sold, page, limit } = queryDto
+    return listingDAO.getFilteredListings( searches, brands, categories, conditions, price_min, price_max, sold, page, limit )
   }
 }
 
