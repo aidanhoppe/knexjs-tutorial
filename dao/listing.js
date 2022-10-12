@@ -94,21 +94,23 @@ class ListingDAO {
     //need to join with created_at, updated_at, name as aliases OR just name and dont include the timestamps
 
     if(searches) {
-      searches.forEach((s) => {
-        knexQuery.where(function() {
+      knexQuery.where(function() {
+        searches.forEach((s) => {
           this.orWhere('description', 'like', `%${s}%`)
           this.orWhere('brand.name', s)
           this.orWhere('category.name', s)
+          // knexQuery.orWhere('description', 'like', `%${s}%`)
+          // knexQuery.orWhere('brand.name', s)
+          // knexQuery.orWhere('category.name', s)
         })
-        // knexQuery.orWhere('description', 'like', `%${s}%`)
-        // knexQuery.orWhere('brand.name', s)
-        // knexQuery.orWhere('category.name', s)
       })
     }
     //AND -- need to make sure (searches or or or...) AND (brands or or or...)
     if(brands) {
       brands.forEach((b) => {
-        knexQuery.orWhere('brand.name', b)
+        knexQuery.where(function() {
+          knexQuery.orWhere('brand.name', b)
+        })
       })
     }
     if(conditions) {
