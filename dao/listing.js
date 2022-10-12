@@ -91,12 +91,18 @@ class ListingDAO {
     const knexQuery = db('listing')
     .innerJoin('category', 'listing.category_id', 'category.category_id')
     .innerJoin('brand', 'listing.brand_id', 'brand.brand_id')
+    //need to join with created_at, updated_at, name as aliases OR just name and dont include the timestamps
 
     if(searches) {
       searches.forEach((s) => {
-        knexQuery.orWhere('description', 'like', `%${s}%`)
-        knexQuery.orWhere('brand.name', s)
-        knexQuery.orWhere('category.name', s)
+        knexQuery.where(function() {
+          this.orWhere('description', 'like', `%${s}%`)
+          this.orWhere('brand.name', s)
+          this.orWhere('category.name', s)
+        })
+        // knexQuery.orWhere('description', 'like', `%${s}%`)
+        // knexQuery.orWhere('brand.name', s)
+        // knexQuery.orWhere('category.name', s)
       })
     }
     //AND -- need to make sure (searches or or or...) AND (brands or or or...)
@@ -121,6 +127,7 @@ class ListingDAO {
     if(price_max) {
       knexQuery.andWhere('price', '<=', parseInt(price_max))
     }
+    knexQuery.orderBy('created_at', 'desc')
     return knexQuery
   }
 }
