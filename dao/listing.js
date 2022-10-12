@@ -96,9 +96,9 @@ class ListingDAO {
     //add -- i forgot
 
     if(sold) {
-      knexQuery.where('status', 'Sold')
+      knexQuery.where('listing.status', 'Sold')
     } else {
-      knexQuery.where('status', 'Active')
+      knexQuery.where('listing.status', 'Active')
     }
     if(searches) {
       knexQuery.where(function() {
@@ -141,7 +141,9 @@ class ListingDAO {
     knexQuery.orderBy('listing.created_at', 'desc')
     .select('*', 
     'brand.name AS brand_name', 
-    'category.name AS category_name', 
+    'category.name AS category_name',
+    'listing.status AS status',
+    'brand.status AS brand_status', 
     'listing.created_at AS created_at',
     'listing.updated_at AS updated_at',
     'brand.created_at AS brand_created_at', 
