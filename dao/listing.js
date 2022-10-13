@@ -128,7 +128,7 @@ class ListingDAO {
     if(categories) {
       knexQuery.where(function() {
         categories.forEach((c) => {
-          knexQuery.orWhere('category.name', c)
+          this.orWhere('category.name', c)
         })
       })
     }
