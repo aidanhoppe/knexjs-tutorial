@@ -103,10 +103,10 @@ class ListingDAO {
     if(searches) {
       knexQuery.where(function() {
         searches.forEach((s) => {
-          this.orWhere('description', 'like', `%${s}%`)
-          this.orWhere('title', 'like', `%${s}%`)
-          this.orWhere('brand.name', s)
-          this.orWhere('category.name', s)
+          this.orWhere('description', 'ilike', `%${s}%`)
+          this.orWhere('title', 'ilike', `%${s}%`)
+          this.orIWhere('brand.name', s)
+          this.orIWhere('category.name', s)
         })
       })
     }
