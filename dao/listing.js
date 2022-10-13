@@ -149,8 +149,8 @@ class ListingDAO {
     'brand.created_at AS brand_created_at', 
     'category.created_at AS category_created_at')
     if(page&&limit) {
-      const startIndex = (page - 1) * limit
-      knexQuery.limit(limit).offset(startIndex)
+      const startIndex = (parseInt(page) - 1) * parseInt(limit)
+      knexQuery.limit(parseInt(limit)).offset(startIndex)
     }
     return knexQuery
   }
