@@ -13,7 +13,7 @@ const messageController = require('../controller/message')
 const offerController = require('../controller/offer')
 const cartController = require('../controller/cart')
 const reportController = require('../controller/report')
-const { generateUploadURL } = require('../s3')
+const { generateUploadURL } = require('../s3');
 
 const router = express.Router();
 router.post('/listing', listingController.createListing)
@@ -30,7 +30,11 @@ router.get('/s3Url', async (req, res) => {
     res.send({url})
 })
 router.post('/address', addressController.createAddress)
+
 router.post('/brand', brandController.createBrand)
+router.put('/brand', brandController.updateBrandStatus)
+router.get('/brand', brandController.getApprovedBrands)
+
 router.post('/category', categoryController.createCategory)
 
 router.post('/user', userController.createUser)

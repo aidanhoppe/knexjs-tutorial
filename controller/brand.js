@@ -9,6 +9,22 @@ class BrandController {
       console.error(err);
     }
   }
+  async updateBrandStatus(req, res) {
+    try {
+      const id = await brandService.updateBrandStatus(req.body)
+      res.status(201).json(id)
+    } catch (e) {
+      console.error(e)
+    }
+  }
+  async getApprovedBrands(req, res) {
+    try {
+      const brands = await brandService.getApprovedBrands()
+      res.status(200).json(brands)
+    } catch (e) {
+      console.error(e)
+    }
+  }
 }
 
 module.exports = new BrandController();

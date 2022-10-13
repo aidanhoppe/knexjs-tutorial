@@ -8,6 +8,16 @@ class BrandService {
         name
     );
   }
+  updateBrandStatus(brandDto) {
+    const { brand_id, status } = brandDto
+    return brandDAO.updateBrandStatus(
+      brand_id,
+      status
+    )
+  }
+  getApprovedBrands() {
+    return brandDAO.getApprovedBrands()
+  }
 }
 
 module.exports = new BrandService();
