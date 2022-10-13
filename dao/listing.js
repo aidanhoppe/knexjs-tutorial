@@ -105,8 +105,8 @@ class ListingDAO {
         searches.forEach((s) => {
           this.orWhere('description', 'ilike', `%${s}%`)
           this.orWhere('title', 'ilike', `%${s}%`)
-          this.orIWhere('brand.name', s)
-          this.orIWhere('category.name', s)
+          this.orWhere('brand.name', s)
+          this.orWhere('category.name', s)
         })
       })
     }
