@@ -9,6 +9,14 @@ class CategoryController {
       console.error(err);
     }
   }
+  async getCategories(req, res) {
+    try {
+      const categories = await categoryService.getCategories()
+      res.status(200).json(categories)
+    } catch (e) {
+      console.error(e)
+    }
+  }
 }
 
 module.exports = new CategoryController();

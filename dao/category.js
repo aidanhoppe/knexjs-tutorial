@@ -10,6 +10,11 @@ class CategoryDAO {
 
     return id;
   }
+  async getCategories() {
+    const categories = await db('category')
+    .select('category_id AS value', 'name AS label')
+    return categories
+  }
 }
 
 module.exports = new CategoryDAO();

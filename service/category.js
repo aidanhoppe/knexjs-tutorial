@@ -7,6 +7,9 @@ class CategoryService {
         name
     );
   }
+  getCategories() {
+    return categoryDAO.getCategories()
+  }
 }
 
 module.exports = new CategoryService();

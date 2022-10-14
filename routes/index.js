@@ -36,6 +36,7 @@ router.put('/brand', brandController.updateBrandStatus)
 router.get('/brand', brandController.getApprovedBrands)
 
 router.post('/category', categoryController.createCategory)
+router.get('/category', categoryController.getCategories)
 
 router.post('/user', userController.createUser)
 router.put('/user', userController.updateUser)
