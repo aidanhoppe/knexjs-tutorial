@@ -114,7 +114,7 @@ class ListingDAO {
     if(brands) {
       knexQuery.where(function() {
         brands.forEach((b) => {
-          this.orWhere('brand.name', b)
+          this.orWhere('brand.brand_id', b)
         })
       })
     }
@@ -128,7 +128,7 @@ class ListingDAO {
     if(categories) {
       knexQuery.where(function() {
         categories.forEach((c) => {
-          this.orWhere('category.name', c)
+          this.orWhere('category.category_id', c)
         })
       })
     }
