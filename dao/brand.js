@@ -22,7 +22,7 @@ class BrandDAO {
   async getApprovedBrands() {
     const brands = await db('brand')
     .where('status', 'approved')
-    .select('name AS label', 'name AS value')
+    .select('name AS label', 'brand_id AS value')
     return brands
   }
 }
