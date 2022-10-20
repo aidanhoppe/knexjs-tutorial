@@ -38,6 +38,11 @@ class UserDAO {
             updated_at: new Date()
         })
     }
+    async addFeedQuery(user_id, queries) {
+        await db('user')
+        .where('user_id', user_id)
+        .insert([...queries])
+    }
     async updateUserShop(user_id, shop_photo, shop_name, shop_policy, default_shipping, address_id) {
         await db('user')
         .where('user_id', user_id)

@@ -41,6 +41,14 @@ class UserController {
       console.log(e)
     }
   }
+  async addFeedQuery(req, res) {
+    try {
+      const response = userService.addFeedQuery(req.body)
+      res.status(201).json(response)
+    } catch (e) {
+      console.log(e)
+    }
+  }
 }
 
 module.exports = new UserController();

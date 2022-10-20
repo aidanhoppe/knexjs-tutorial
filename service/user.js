@@ -45,6 +45,10 @@ class UserService {
       address_id
     )
   }
+  async addFeedQuery(userDto) {
+    const {user_id, queries} = userDto
+    return userDAO.addFeedQuery(user_id, queries)
+  }
 }
 
 module.exports = new UserService();
