@@ -6,13 +6,21 @@ module.exports = {
   development: {
     client: 'postgresql',
     connection: {
+      // // TODO change to your db name
+      // host: process.env.HOST_NAME,
+      // database: process.env.DATABASE_NAME,
+
+      // // change to your db user
+      // user: process.env.USER,
+      // password: process.env.PASSWORD
+
       // TODO change to your db name
-      host: process.env.HOST_NAME,
-      database: process.env.DATABASE_NAME,
+      host: "pdevfree.cls3klxkeiws.us-west-1.rds.amazonaws.com",
+      database: "Testing",
 
       // change to your db user
-      user: process.env.USER,
-      password: process.env.PASSWORD
+      user: "pdevfree",
+      password: "pdevfree"
     },
     // pool: {
     //   min: 2,
