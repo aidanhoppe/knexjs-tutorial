@@ -13,6 +13,7 @@ router.post('/register', async (req, res) => {
     const hashPassword = await bcrypt.hash(req.body.password, salt)
 
     req.body.password = hashPassword
+    console.log('req.body after hashing: ', req.body)
 
     //TODO
     //VERIFY EMAIL BELONGS TO USER HERE -- WAIT UNTIL EMAIL CONFIRMED THEN CREATE USER
