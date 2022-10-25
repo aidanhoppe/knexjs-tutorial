@@ -18,6 +18,7 @@ const registerValidation = data => {
             .required()
     })
     console.log('in register validation: ', data)
+    console.log('schema validation: \n', schema.validate(data))
     return schema.validate(data)
 }
 
