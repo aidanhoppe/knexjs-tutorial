@@ -1,4 +1,5 @@
 const db = require('../db/db');
+const bcrypt = require('bcryptjs')
 
 class UserDAO {
     async createUser(first_name, last_name, email, password) {
@@ -12,6 +13,17 @@ class UserDAO {
         .returning('user_id');
 
         return id;
+    }
+    async login(email, password) {
+        const [result] = await db('user')
+        .where('email', email)
+
+        if(!result) return res.status(400).send('Email or password is incorrect.')
+
+        const validPass = await bcrypt.compare(password, result.password)
+        if(!validPass) return res.status(400).send('Email or password is incorrect.')
+
+        return res.send('Success')
     }
     async getUser(user_id) {
         const [user] = await db('user')

@@ -3,11 +3,19 @@ const userService = require('../service/user');
 class UserController {
   async createUser(req, res) {
     try {
-      console.log('in user controller: ', req?.body)
       const id = await userService.createUser(req.body);
       res.status(201).json(id);
     } catch (err) {
       console.error(err);
+      res.status(400).send(err)
+    }
+  }
+  async login(req, res) {
+    try {
+      const result = await userService.login(req.body)
+      res.status(200).json(result)
+    } catch (e) {
+      console.login(e)
       res.status(400).send(err)
     }
   }

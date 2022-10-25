@@ -10,6 +10,13 @@ class UserService {
         password
     );
   }
+  async login(userDto) {
+    const { email, password } = userDto
+    return userDAO.login(
+        email,
+        password
+    )
+  }
   async getUser(userDto) {
     const { user_id } = userDto
     const user = await userDAO.getUser(user_id)
