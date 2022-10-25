@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
     //VERIFY EMAIL BELONGS TO USER HERE -- WAIT UNTIL EMAIL CONFIRMED THEN CREATE USER
 
     //Trying things
-    userController.createUser(req, res)
+    return userController.createUser(req, res)
 
     //Move all above to user or just create user in database here.
     // res.send('Register')
@@ -30,7 +30,8 @@ router.post('/login', (req, res) => {
     if(error) return res.status(400).send(error.details[0].message)
 
     //Link to user
-    res.send('Login')
+    return userController.login(req, res)
+    // res.send('Login')
 })
 // router. post('/login', (req, res) => {
 
