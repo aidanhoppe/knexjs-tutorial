@@ -64,7 +64,7 @@ router.get('/available_payout', available_payoutController.getPayout)
 router.put('/available_payout/add', available_payoutController.addToPayout)
 // router.post('/available_payout/execute', available_payoutController.executePayout)
 
-router.put('/chat/updatelastviewer', chatController.updateLastViewer)
+// router.put('/chat/updatelastviewer', chatController.updateLastViewer)
 router.put('/chat/updatetimestamp', chatController.updateTimestamp)
 router.get('/chat/:user_id', chatController.getChats)
 router.post('/chat', chatController.createChat)

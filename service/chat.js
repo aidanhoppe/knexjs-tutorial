@@ -23,13 +23,13 @@ class ChatService {
         listing_id
     )
   }
-  updateLastViewer(chatDto) {
-    const { chat_id, last_viewer } = chatDto
-    return chatDAO.updateLastViewer(chat_id, last_viewer)
-  }
+  // updateLastViewer(chatDto) {
+  //   const { chat_id, last_viewer } = chatDto
+  //   return chatDAO.updateLastViewer(chat_id, last_viewer)
+  // }
   updateTimestamp(chatDto) {
-    const { chat_id, last_viewer, last_updater } = chatDto
-    return chatDAO.updateTimestamp(chat_id, last_viewer, last_updater)
+    const { chat_id, last_viewed_buyer, last_viewed_seller } = chatDto
+    return chatDAO.updateTimestamp(chat_id, last_viewed_buyer, last_viewed_seller)
   }
 }
 

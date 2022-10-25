@@ -1,13 +1,13 @@
 const db = require('../db/db');
 
 class UserDAO {
-    async createUser(firebase_id, first_name, last_name, email) {
+    async createUser(first_name, last_name, email, password) {
         const [id] = await db('user')
         .insert({
-            firebase_id,
             first_name, 
             last_name, 
-            email
+            email,
+            password
         })
         .returning('user_id');
 

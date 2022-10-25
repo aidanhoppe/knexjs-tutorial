@@ -27,25 +27,34 @@ class ChatDAO {
     .select()
     return chat
   }
-  async updateLastViewer(chat_id, last_viewer) {
-    console.log('chat_id: ', chat_id, "  last_viewer: ", last_viewer)
-    const [result] = await db('chat')
+  // async updateLastViewer(chat_id, last_viewer) {
+  //   //TODO remove deprecated last_viewer
+  //   console.log('chat_id: ', chat_id, "  last_viewer: ", last_viewer)
+  //   const [result] = await db('chat')
+  //   .where('chat_id', chat_id)
+  //   .update({
+  //       last_viewer,
+  //       updated_at: new Date()
+  //   })
+  //   return result
+  // }
+  async updateTimestamp(chat_id, last_viewed_buyer, last_viewed_seller) {
+    const knexQuery = await db('chat')
     .where('chat_id', chat_id)
-    .update({
-        last_viewer,
-        updated_at: new Date()
-    })
-    return result
-  }
-  async updateTimestamp(chat_id, last_viewer, last_updater) {
-    const [result] = await db('chat')
-    .where('chat_id', chat_id)
-    .update({
-        last_viewer,
-        last_updater,
-        updated_at: new Date()
-    })
-    return result
+
+    if(last_viewed_buyer) {
+      knexQuery.update({
+          last_viewed_buyer,
+          updated_at: new Date()
+      })
+    }
+    if(last_viewed_seller) {
+      knexQuery.update({
+          last_viewed_seller,
+          updated_at: new Date()
+      })
+    }
+    return [knexQuery]
   }
 }
 

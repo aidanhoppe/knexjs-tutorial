@@ -13,7 +13,7 @@ exports.up = async (knex) => {
   })
   await knex.schema.createTable('user', (table) => {
     table.increments('user_id')
-    table.string('firebase_id').unique()
+    // table.string('firebase_id').unique()
     table.string('first_name', 30).notNullable()
     table.string('last_name', 30).notNullable()
     table.string('shop_name', 30)
@@ -22,6 +22,7 @@ exports.up = async (knex) => {
     table.integer('default_shipping')
     table.float('rating')
     table.string('email').notNullable().unique()
+    table.string('password').notNullable()
     table.boolean('verified_email').defaultTo(false)
     table.bigInteger('phone')
     table.boolean('verified_phone').defaultTo(false)

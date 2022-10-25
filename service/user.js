@@ -2,12 +2,12 @@ const userDAO = require('../dao/user');
 
 class UserService {
   createUser(userDto) {
-    const { firebase_id, first_name, last_name, email } = userDto;
+    const { first_name, last_name, email, password } = userDto;
     return userDAO.createUser(
-        firebase_id,
         first_name, 
         last_name, 
-        email
+        email,
+        password
     );
   }
   async getUser(userDto) {
