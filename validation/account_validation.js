@@ -17,6 +17,7 @@ const registerValidation = data => {
             .min(8)
             .required()
     })
+    console.log('in register validation: ', data)
     return schema.validate(data)
 }
 
