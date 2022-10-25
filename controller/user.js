@@ -8,6 +8,7 @@ class UserController {
       res.status(201).json(id);
     } catch (err) {
       console.error(err);
+      res.status(400).send(err)
     }
   }
   async getUser(req, res) {
@@ -16,6 +17,7 @@ class UserController {
         res.status(201).json(user)
     } catch (e) {
         console.log(e)
+        res.status(400).send(e)
     }
   }
   async getUserFirebase(req, res) {
@@ -24,6 +26,7 @@ class UserController {
       res.status(201).json(user)
     } catch (e) {
       console.log(e)
+      res.status(400).send(e)
     }
   }
   async updateUser(req, res) {
@@ -32,6 +35,7 @@ class UserController {
         res.status(201)
     } catch (e) {
         console.log(e)
+        res.status(400).send(e)
     }
   }
   async updateUserShop(req, res) {
@@ -40,6 +44,7 @@ class UserController {
       res.status(201).json(response)
     } catch (e) {
       console.log(e)
+      res.status(400).send(e)
     }
   }
   async addFeedQuery(req, res) {
@@ -48,6 +53,7 @@ class UserController {
       res.status(201).json(response)
     } catch (e) {
       console.log(e)
+      res.status(400).send(e)
     }
   }
 }
