@@ -17,7 +17,7 @@ const registerValidation = data => {
             .min(8)
             .required()
     })
-    return Joi.validate(data, schema)
+    return schema.validate(data)
 }
 
 const loginValidation = data => {
@@ -29,7 +29,7 @@ const loginValidation = data => {
             .min(8)
             .required()
     })
-    return Joi.validate(data, schema)
+    return schema.validate(data)
 }
 
 module.exports.registerValidation = registerValidation;
