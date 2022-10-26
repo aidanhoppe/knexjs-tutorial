@@ -4,7 +4,7 @@ class ListingController {
   async createListing(req, res) {
     //Confirm seller matches token
     if(req.body.seller_id != req.user._id) return res.status(401).send('You can only update your own listings')
-    
+
     try {
       const id = await listingService.createListing(req.body);
       res.status(201).json(id);
@@ -14,7 +14,6 @@ class ListingController {
     }
   }
   async updateListing(req, res) {
-    // if(req.body.user_id != req.user._id) return res.status(401).send('You can only update your own listings')
     try {
       const id = await listingService.updateListing(req.user._id, req.body)
       res.status(201).json(id)
@@ -51,7 +50,6 @@ class ListingController {
     }
   }
   async deleteListing(req, res) {
-    if(req.body.user_id != req.user._id) return res.status(401).send('You can only update your own listings')
     try {
       const id = await listingService.deleteListing(req.user._id, req.body)
       res.status(201).json(id)
@@ -61,7 +59,6 @@ class ListingController {
     }
   }
   async unlist(req, res) {
-    if(req.body.user_id != req.user._id) return res.status(401).send('You can only update your own listings')
     try {
       const id = await listingService.unlist(req.user._id, req.query)
       res.status(201).json(id)
@@ -71,7 +68,6 @@ class ListingController {
     }
   }
   async unlistMultiple(req, res) {
-    if(req.body.user_id != req.user._id) return res.status(401).send('You can only update your own listings')
     try {
       const result = await listingService.unlistMultiple(req.user._id, req.body)
       res.status(201).json(result)
