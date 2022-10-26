@@ -4,7 +4,7 @@ class CategoryController {
   async createCategory(req, res) {
     // if(req.user == process.env.ADMIN_ID)
     console.log('req.user: ', req.user)
-    if(req.user.user_id != '1') return res.status(401).send('Access Denied')
+    if(req.user._id != '1') return res.status(401).send('Access Denied')
     try {
       const id = await categoryService.createCategory(req.body);
       res.status(201).json(id);
