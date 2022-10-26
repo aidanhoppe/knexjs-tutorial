@@ -18,10 +18,12 @@ class UserDAO {
         const [result] = await db('user')
         .where('email', email)
 
-        if(!result) return res.status(400).send('Email or password is incorrect.')
+        // if(!result) return res.status(400).send('Email or password is incorrect.')
+        if(!result) return {result: 'Email or password is incorrect'}
 
         const validPass = await bcrypt.compare(password, result.password)
-        if(!validPass) return res.status(400).send('Email or password is incorrect.')
+        // if(!validPass) return res.status(400).send('Email or password is incorrect.')
+        if(!validPass) return {result: 'Email or password is incorrect'}
 
         return {result: 'Success'}
     }
