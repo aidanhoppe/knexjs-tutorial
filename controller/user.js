@@ -16,7 +16,7 @@ class UserController {
       const result = await userService.login(req.body)
       if(result?.result == 'Success') {
         const token = jwt.sign({_id: result.user_id}, '7483ae193072664e34e3fd6432a4ad183d132b99c81174989f88db393ec29c5f')
-        res.header('auth-token', token).json({user_id: result.user_id, token})
+        res.status(200).header('auth-token', token).json({user_id: result.user_id, token})
         // res.status(200).json(result)
       } else {
         res.status(400).send(result.result)
@@ -29,7 +29,7 @@ class UserController {
   async getUser(req, res) {
     try {
         const user = await userService.getUser(req.params)
-        res.status(201).json(user)
+        res.status(200).json(user)
     } catch (e) {
         console.log(e)
         res.status(400).send(e)

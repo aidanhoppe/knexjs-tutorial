@@ -19,7 +19,7 @@ router.post('/register', async (req, res) => {
     //VERIFY EMAIL BELONGS TO USER HERE -- WAIT UNTIL EMAIL CONFIRMED THEN CREATE USER
 
     //Trying things
-    return userController.createUser(req, res)
+    return await userController.createUser(req, res)
 
     //Move all above to user or just create user in database here.
     // res.send('Register')
