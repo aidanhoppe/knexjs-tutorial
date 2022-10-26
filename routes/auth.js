@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 
 router.post('/register', async (req, res) => {
     const { error } = registerValidation(req.body)
-    if(error) return res.status(400).send(error.details[0].message)
+    if(error) return res.status(400).send({error: error.details[0].message})
 
     
     //Hash the password
@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', (req, res) => {
     const { error } = loginValidation(req.body)
-    if(error) return res.status(400).send({Error: error.details[0].message})
+    if(error) return res.status(400).send({error: error.details[0].message})
 
     //Link to user
     return userController.login(req, res)
