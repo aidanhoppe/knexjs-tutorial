@@ -16,7 +16,7 @@ class UserController {
       res.status(200).json(result)
     } catch (e) {
       console.log(e)
-      res.status(400).send(err)
+      res.status(400).send(e)
     }
   }
   async getUser(req, res) {
