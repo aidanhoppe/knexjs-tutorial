@@ -1,4 +1,5 @@
 const express = require('express');
+const verify = require('./verifyToken')
 const listingController = require('../controller/listing');
 const addressController = require('../controller/address');
 const userController = require('../controller/user');
@@ -35,7 +36,7 @@ router.post('/brand', brandController.createBrand)
 router.put('/brand', brandController.updateBrandStatus)
 router.get('/brand', brandController.getApprovedBrands)
 
-router.post('/category', categoryController.createCategory)
+router.post('/category', verify, categoryController.createCategory)
 router.get('/category', categoryController.getCategories)
 
 router.post('/user', userController.createUser)
