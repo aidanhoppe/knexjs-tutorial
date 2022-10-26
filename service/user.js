@@ -22,11 +22,11 @@ class UserService {
     const user = await userDAO.getUser(user_id)
     return user
   }
-  async getUserFirebase(userDto) {
-    const { firebase_id } = userDto
-    const user = await userDAO.getUserFirebase(firebase_id)
-    return user
-  }
+  // async getUserFirebase(userDto) {
+  //   const { firebase_id } = userDto
+  //   const user = await userDAO.getUserFirebase(firebase_id)
+  //   return user
+  // }
   async updateUser(userDto) {
     const {user_id, first_name, last_name, email, verified_email, phone, verified_phone, shop_name, address_id} = userDto
     return userDAO.updateUser(

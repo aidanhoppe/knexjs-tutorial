@@ -35,15 +35,15 @@ class UserController {
         res.status(400).send(e)
     }
   }
-  async getUserFirebase(req, res) {
-    try {
-      const user = await userService.getUserFirebase(req.params)
-      res.status(201).json(user)
-    } catch (e) {
-      console.log(e)
-      res.status(400).send(e)
-    }
-  }
+  // async getUserFirebase(req, res) {
+  //   try {
+  //     const user = await userService.getUserFirebase(req.params)
+  //     res.status(201).json(user)
+  //   } catch (e) {
+  //     console.log(e)
+  //     res.status(400).send(e)
+  //   }
+  // }
   async updateUser(req, res) {
     try {
         await userService.updateUser(req.body)

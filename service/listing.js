@@ -18,9 +18,10 @@ class ListingService {
         accepting_offers
     );
   }
-  updateListing(listingDto) {
+  updateListing(_id, listingDto) {
     const { listing_id, title, price, shipping, description, condition, thumbnail, photos, brand_id, model, category_id, accepting_offers } = listingDto;
     return listingDAO.updateListing(
+        _id,
         listing_id, 
         title, 
         price,
@@ -35,12 +36,12 @@ class ListingService {
         accepting_offers
     );
   }
-  unlist(listingDto) {
+  unlist(_id, listingDto) {
     const { listing_id } = listingDto
-    return listingDAO.unlist(listing_id)
+    return listingDAO.unlist(_id, listing_id)
   }
-  unlistMultiple(listingIdArray) {
-    return listingDAO.unlistMultiple(listingIdArray)
+  unlistMultiple(_id, listingIdArray) {
+    return listingDAO.unlistMultiple(_id, listingIdArray)
   }
   getNewListings(page, limit) {
     return listingDAO.getNewListings(parseInt(page), parseInt(limit))
@@ -48,7 +49,7 @@ class ListingService {
   getListing(listing_id) {
     return listingDAO.getListing(listing_id)
   }
-  deleteListing(listingDto) {
+  deleteListing(_id, listingDto) {
     return listingDAO.deleteListing(listingDto.listing_id)
   }
   getUserListings(param) {
