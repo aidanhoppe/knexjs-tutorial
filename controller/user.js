@@ -19,11 +19,11 @@ class UserController {
         res.status(200).header('auth-token', token).json({user_id: result.user_id, token})
         // res.status(200).json(result)
       } else {
-        res.status(400).send(result.result)
+        res.status(400).json(result)
       }
     } catch (e) {
       console.log(e)
-      res.status(400).send(result)
+      res.status(400).json(result)
     }
   }
   async getUser(req, res) {
