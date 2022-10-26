@@ -17,6 +17,7 @@ class UserDAO {
     async login(email, password) {
         const [result] = await db('user')
         .where('email', email)
+        .returning(['user_id'])
 
         // if(!result) return res.status(400).send('Email or password is incorrect.')
         if(!result) return {result: 'Email or password is incorrect'}
@@ -25,7 +26,7 @@ class UserDAO {
         // if(!validPass) return res.status(400).send('Email or password is incorrect.')
         if(!validPass) return {result: 'Email or password is incorrect'}
 
-        return {result: 'Success'}
+        return {user_id: result.user_id, result: 'Success'}
     }
     async getUser(user_id) {
         const [user] = await db('user')
