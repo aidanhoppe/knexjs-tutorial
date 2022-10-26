@@ -15,7 +15,7 @@ class UserController {
     try {
       const result = await userService.login(req.body)
       if(result?.result == 'Success') {
-        const token = jwt.sign({_id: user._id})
+        const token = jwt.sign({_id: result.user_id})
         req.header('auth-token', token).send(token)
         res.status(200).json(result)
       } else {
