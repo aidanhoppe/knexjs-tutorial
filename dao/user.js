@@ -3,16 +3,16 @@ const bcrypt = require('bcryptjs')
 
 class UserDAO {
     async createUser(first_name, last_name, email, password) {
-        const result = await db('user')
+        const [id] = await db('user')
         .insert({
             first_name, 
             last_name, 
             email,
             password
         })
-        .returning('user_id');
+        .returning(['user_id']);
 
-        return result;
+        return id;
     }
     async login(email, password) {
         const [result] = await db('user')
