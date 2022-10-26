@@ -13,7 +13,11 @@ class UserController {
   async login(req, res) {
     try {
       const result = await userService.login(req.body)
-      res.status(200).json(result)
+      if(result?.result == 'Success') {
+        res.status(200).json(result)
+      } else {
+        res.status(400).send(result.result)
+      }
     } catch (e) {
       console.log(e)
       res.status(400).send(e)
