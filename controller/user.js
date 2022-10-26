@@ -1,3 +1,4 @@
+const jwt = require('jsonwebtoken')
 const userService = require('../service/user');
 
 class UserController {
@@ -14,6 +15,8 @@ class UserController {
     try {
       const result = await userService.login(req.body)
       if(result?.result == 'Success') {
+        const token = jwt.sign({_id: user._id})
+        req.header('auth-token', token).send(token)
         res.status(200).json(result)
       } else {
         res.status(400).send(result.result)
