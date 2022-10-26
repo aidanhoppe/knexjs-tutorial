@@ -4,8 +4,14 @@ const userService = require('../service/user');
 class UserController {
   async createUser(req, res) {
     try {
-      const id = await userService.createUser(req.body);
-      res.status(201).json(id);
+      const result = await userService.createUser(req.body)
+      if(!result?.error) {
+        //TODO replace with env variable
+        const token = jwt.sign({_id: result.user_id}, '7483ae193072664e34e3fd6432a4ad183d132b99c81174989f88db393ec29c5f')
+        res.status(201).header('auth-token', token).json({user_id: result.user_id, token});
+      } else {
+        return res.status(400).json(result)
+      }
     } catch (err) {
       console.error(err);
       res.status(400).send(err)
@@ -15,9 +21,9 @@ class UserController {
     try {
       const result = await userService.login(req.body)
       if(result?.result == 'Success') {
+        //TODO replace with env variable
         const token = jwt.sign({_id: result.user_id}, '7483ae193072664e34e3fd6432a4ad183d132b99c81174989f88db393ec29c5f')
         res.status(200).header('auth-token', token).json({user_id: result.user_id, token})
-        // res.status(200).json(result)
       } else {
         res.status(400).json(result)
       }
