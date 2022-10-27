@@ -8,6 +8,7 @@ const saveController = require('../controller/save')
 const followController = require('../controller/follow')
 const payoutController = require('../controller/payout')
 const available_payoutController = require('../controller/available_payout')
+const user_push_tokenController = require('../controller/user_push_token')
 const chatController = require('../controller/chat')
 const messageController = require('../controller/message')
 const offerController = require('../controller/offer')
@@ -82,4 +83,6 @@ router.put('/offer/update', offerController.updateOffer)
 router.post('/cart', cartController.createCart)
 
 router.post('/report', reportController.createReport)
+
+router.put('/user_push_token', user_push_tokenController.alterPushTokens)
 module.exports = router;
