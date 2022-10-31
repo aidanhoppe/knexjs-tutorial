@@ -12,7 +12,7 @@ class SaveController {
   async deleteSave(req, res) {
     try {
         const id = await saveService.deleteSave(req.params)
-        res.status(201).json(id)
+        res.status(200).json(id)
     } catch (e) {
         console.log(e)
     }
@@ -20,7 +20,7 @@ class SaveController {
   async getSaveId(req, res) {
     try {
         const [tf] = await saveService.getSaveId(req.params)
-        res.status(201).json(tf)
+        res.status(200).json(tf)
     } catch (e) {
         console.log(e)
     }
@@ -28,7 +28,7 @@ class SaveController {
   async getUserSaves(req, res) {
     try {
       const saves = await saveService.getUserSaves(req.params)
-      res.status(201).json(saves)
+      res.status(200).json(saves)
     } catch (e) {
       console.log(e)
     }

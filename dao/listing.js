@@ -20,9 +20,11 @@ class ListingDAO {
       .returning('listing_id');
     return id;
   }
-  async updateListing(listing_id, title, price, shipping, description, condition, thumbnail, photos, brand_id, model, category_id, accepting_offers) {
+  async updateListing(_id, listing_id, title, price, shipping, description, condition, thumbnail, photos, brand_id, model, category_id, accepting_offers) {
     const [id] = await db('listing')
       .where('listing_id', listing_id)
+      //Confirm seller by matching to jwt token (_id)
+      .where('seller_id', _id)
       .update({
         title, 
         price,
@@ -39,18 +41,22 @@ class ListingDAO {
       .returning('listing_id');
     return id;
   }
-  async unlist(listing_id) {
+  async unlist(_id, listing_id) {
     const [id] = await db('listing')
     .where('listing_id', listing_id)
+    //Confirm seller by matching to jwt token (_id)
+    .where('seller_id', _id)
     .update({
       status: 'Archived'
     })
     .returning('listing_id')
     return(id)
   }
-  async unlistMultiple(listing_ids) {
+  async unlistMultiple(_id, listing_ids) {
     const result = await db('listing')
     .whereIn('listing_id', listing_ids)
+    //Confirm seller by matching to jwt token (_id)
+    .where('seller_id', _id)
     .update({
       status: 'Archived'
     })
@@ -73,9 +79,11 @@ class ListingDAO {
     .select()
     return listing
   }
-  async deleteListing(listing_id) {
+  async deleteListing(_id, listing_id) {
     const [id] = await db('listing')
     .where('listing_id', listing_id)
+    //Confirm seller by matching to jwt token (_id)
+    .where('seller_id', _id)
     .del(['listing_id'])
     return id
   }

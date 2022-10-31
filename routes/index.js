@@ -1,4 +1,5 @@
 const express = require('express');
+const { verifyUser, verifyAdmin }= require('./verifyToken')
 const listingController = require('../controller/listing');
 const addressController = require('../controller/address');
 const userController = require('../controller/user');
@@ -18,12 +19,12 @@ const reportController = require('../controller/report')
 const { generateUploadURL } = require('../s3');
 
 const router = express.Router();
-router.post('/listing', listingController.createListing)
-router.put('/listing', listingController.updateListing)
+router.post('/listing', verifyUser, listingController.createListing)
+router.put('/listing', verifyUser, listingController.updateListing)
 router.get('/listing', listingController.getListing)
-router.delete('/listing', listingController.deleteListing)
-router.put('/listing/unlist', listingController.unlist)
-router.put('/listing/unlist/multiple', listingController.unlistMultiple)
+router.delete('/listing', verifyUser, listingController.deleteListing)
+router.put('/listing/unlist', verifyUser, listingController.unlist)
+router.put('/listing/unlist/multiple', verifyUser, listingController.unlistMultiple)
 router.get('/listing/new_listings', listingController.getNewListings)
 router.get('/listing/user/:user_id', listingController.getUserListings)
 router.get('/listing/filtered', listingController.getFilteredListings)
@@ -37,14 +38,14 @@ router.post('/brand', brandController.createBrand)
 router.put('/brand', brandController.updateBrandStatus)
 router.get('/brand', brandController.getApprovedBrands)
 
-router.post('/category', categoryController.createCategory)
+router.post('/category', verifyAdmin, categoryController.createCategory)
 router.get('/category', categoryController.getCategories)
 
 router.post('/user', userController.createUser)
 router.put('/user', userController.updateUser)
 router.put('/user/shop', userController.updateUserShop)
 router.get('/user/:user_id', userController.getUser)
-router.get('/user/:firebase_id/firebase', userController.getUserFirebase)
+// router.get('/user/:firebase_id/firebase', userController.getUserFirebase)
 // router.get('/user/:user_id/listings', userController.getUserListings)
 
 router.post('/save', saveController.createSave)
