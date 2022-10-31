@@ -9,6 +9,7 @@ const followController = require('../controller/follow')
 const payoutController = require('../controller/payout')
 const available_payoutController = require('../controller/available_payout')
 const user_push_tokenController = require('../controller/user_push_token')
+const notificationController = require('../controller/notification')
 const chatController = require('../controller/chat')
 const messageController = require('../controller/message')
 const offerController = require('../controller/offer')
@@ -85,4 +86,6 @@ router.post('/cart', cartController.createCart)
 router.post('/report', reportController.createReport)
 
 router.put('/user_push_token', user_push_tokenController.alterPushTokens)
+
+router.post('/notification', notificationController.sendNotification)
 module.exports = router;

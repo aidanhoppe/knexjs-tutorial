@@ -2,9 +2,9 @@ const db = require("../db/db");
 
 class UserPushTokenDAO {
   async getUserPushTokens(user_id) {
-    const [response] = await db("user_push_token")
+    const response = await db("user_push_token")
       .where("user_id", user_id)
-      .select();
+      .select("push_token");
     return response;
   }
 
@@ -19,7 +19,7 @@ class UserPushTokenDAO {
   }
 
   async removePushToken(user_id, push_token) {
-    const [response] = await db("user_push_token")
+    const response = await db("user_push_token")
       .where("user_id", user_id)
       .andWhere("push_token", push_token)
       .del(["user_id", "push_token"]);
